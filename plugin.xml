@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:rim="http://www.blackberry.com/ns/widgets"
+	id="com.ahoyrtc.cordova"
+	version="0.0.1">
+    <name>AhoyRTC SDK cordova plugin</name>
+    <description>Cordova plugin for the AhoyRTC SDK</description>
+    <author>Klaus-Peter Junghanns</author>
+
+    <js-module src="www/AhoyRTC.js" name="AhoyRTC">
+        <clobbers target="window.AhoyRTC" />
+    </js-module>
+
+    <engines>
+	<engine name="cordova" version=">=3.1.0" />
+    </engines>
+
+    <platform name="ios">
+	<config-file target="config.xml" parent="/*">
+	    <feature name="AhoyRTC">
+		<param name="ios-package" value="AhoyCordova" />
+	        <param name="onload" value="true" />
+	    </feature>
+	</config-file>
+	
+	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
+	    <array>
+	        <dict>
+	            <key>PackageName</key>
+		    <string>$PACKAGE_NAME</string>
+	        </dict>
+	    </array>
+	</config-file>
+<!--	<config-file target="*-Info.plist" parent="UIBackgroundModes">
+	    <array>
+		<string>audio</string>
+		<string>voip</string>
+	    </array>
+	</config-file> -->
+
+	<header-file src="src/ios/AhoyCordova/AhoyCordova.h" />
+	<source-file src="src/ios/AhoyCordova/AhoyCordova.m" />
+
+	<header-file src="src/ios/include/AhoySDK/AhoySDK.h" />
+	<source-file src="src/ios/libAhoySDK.a" framework="true" />
+	<resource-file src="src/ios/AhoySDK.bundle"/>
+	
+	<framework src="QuartzCore.framework" />
+	<framework src="OpenGLES.framework" />
+	<framework src="AudioToolbox.framework" />
+	<framework src="AVFoundation.framework" />
+	<framework src="CoreVideo.framework" />
+	<framework src="Foundation.framework" />
+	<framework src="GLKit.framework" />
+	<framework src="UIKit.framework" />
+	<framework src="CoreGraphics.framework" />
+	<framework src="Security.framework" />
+	<framework src="AssetsLibrary.framework" />
+	<framework src="MobileCoreServices.framework" />
+	<framework src="CoreLocation.framework" />
+	<framework src="libsqlite3.dylib" />
+	<framework src="libstdc++.dylib" />
+	<framework src="libc++.dylib" />
+	<framework src="libSystem.dylib" />
+	<framework src="libutil.dylib" />
+	<framework src="libicucore.dylib" />
+    </platform>
+</plugin>

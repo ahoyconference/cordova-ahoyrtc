@@ -1,0 +1,12 @@
+
+/* Class = "IBUILabel"; text = "Room "; ObjectID = "6OO-p4-gcA"; */
+"6OO-p4-gcA.text" = "Raum ";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "TMJ-3g-Yq7"; */
+"TMJ-3g-Yq7.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "Leave room"; ObjectID = "X0E-c2-2Nq"; */
+"X0E-c2-2Nq.normalTitle" = "Raum verlassen";
+
+/* Class = "IBUILabel"; text = "Waiting for somebody to join..."; ObjectID = "l62-6s-eGY"; */
+"l62-6s-eGY.text" = "Warte auf Teilnehmer...";
