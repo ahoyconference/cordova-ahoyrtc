@@ -5,5 +5,18 @@
   Created by kapejod on 16.02.15.
   Copyright (c) 2015 AhoyRTC. All rights reserved.
 */
-"room_label %@" = "Raum %@";
-"room_label %@ (%@)" = "Raum %@ (%@)";
+"room_label %@" = "Raum '%@'";
+"room_label %@ (%@)" = "Raum '%@' (%@)";
+"leave_button" = "Raum verlassen";
+"empty_message_label" = "Warte auf Teilnehmer...";
+"participants_label %d" = "%d weitere Teilnehmer";
+"lock_conference_label" = "Raum verschließen";
+"speaker_detection_label" = "Sprecher-Erkennung";
+"microphone_label" = "Mikrofon";
+"camera_label" = "Kamera";
+"leave_conference_confirm_message" = "Möchten Sie diese Konferenz verlassen?";
+"leave_conference_confirm_title" = "Konferenz verlassen?";
+"leave_conference_confirm_ok" = "OK";
+"leave_conference_confirm_cancel" = "Abbrechen";"
+
+

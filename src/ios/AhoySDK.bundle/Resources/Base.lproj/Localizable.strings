@@ -5,5 +5,17 @@
   Created by kapejod on 16.02.15.
   Copyright (c) 2015 AhoyRTC. All rights reserved.
 */
-"room_label %@" = "Room %@";
-"room_label %@ (%@)" = "Room %@ (%@)";
+"room_label %@" = "Room '%@'";
+"room_label %@ (%@)" = "Room '%@' (%@)";
+"leave_button" = "Leave room";
+"empty_message_label" = "Waiting for somebody to join...";
+"participants_label %d" = "%d other participants";
+"lock_conference_label" = "Lock conference";
+"speaker_detection_label" = "Speaker detection";
+"microphone_label" = "Microphone";
+"camera_label" = "Camera";
+"leave_conference_confirm_message" = "Do you want to leave this conference room?";
+"leave_conference_confirm_title" = "Leave conference?";
+"leave_conference_confirm_ok" = "OK";
+"leave_conference_confirm_cancel" = "Cancel";"
+

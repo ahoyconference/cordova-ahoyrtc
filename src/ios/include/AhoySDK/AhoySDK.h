@@ -15,6 +15,7 @@
 + (void)destroy;
 + (BOOL)isDeviceVideoCapable;
 + (BOOL)isDeviceHdVideoCapable;
++ (BOOL)isVideoCaptureAvailable;
 
 - (void)setApiKey:(NSString *)apiKey apiUrl:(NSString *)apiUrl;
 - (void)setApnToken:(NSString *)token;
@@ -22,6 +23,8 @@
 - (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (NSDictionary *)getSettings;
 - (NSDictionary *)setSettings:(NSDictionary *)settings;
+- (NSDictionary *)uiColors;
+- (UIColor *)uiColor:(NSString *)name or:(unsigned int)hex;
 
 - (void)didReceivePushNotification:(NSDictionary *)notification;
 - (void)didReceiveLocalNotification:(NSDictionary *)notification;
