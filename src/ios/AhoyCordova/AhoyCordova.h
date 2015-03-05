@@ -24,6 +24,7 @@
 - (void) getConferenceInfo:(CDVInvokedUrlCommand *)command;
 - (void) joinConference:(CDVInvokedUrlCommand *)command;
 - (void) joinConferenceRoomOnServer:(CDVInvokedUrlCommand *)command;
+- (void) createConferenceRoomOnServer:(CDVInvokedUrlCommand *)command;
 - (void) getSettings:(CDVInvokedUrlCommand *)command;
 - (void) setSettings:(CDVInvokedUrlCommand *)command;
 - (void) setPushToken:(CDVInvokedUrlCommand *)command;

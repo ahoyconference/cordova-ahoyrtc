@@ -36,6 +36,7 @@
 - (void)getConferenceInfo:(NSString *)uuid callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)joinConference:(NSString *)uuid presentingViewController:(UIViewController *)viewController callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)joinConferenceRoom:(NSString *)roomName name:(NSString *)name password:(NSString *)password at:(NSString *)wsUrl presentingViewController:(UIViewController *)viewController callback:(void (^)(BOOL, NSDictionary *))callback;
+- (void)createConferenceRoom:(NSString *)roomName password:(NSString *)password moderatorPassword:(NSString *)moderatorPassword at:(NSString *)wsUrl callback:(void (^)(BOOL, NSDictionary *))callback;
 
 - (BOOL)isSpeakerEnabled;
 - (BOOL)isHeadphonesEnabled;

@@ -17,5 +17,7 @@
 "leave_conference_confirm_message" = "Do you want to leave this conference room?";
 "leave_conference_confirm_title" = "Leave conference?";
 "leave_conference_confirm_ok" = "OK";
-"leave_conference_confirm_cancel" = "Cancel";"
+"leave_conference_confirm_cancel" = "Cancel";
+"share_button" = "Share";
+"invited_to_conference_room %@" = "Please join my Ahoy!Conference.";
 

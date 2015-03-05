@@ -256,6 +256,52 @@
     }
 }
 
+- (void) createConferenceRoomOnServer:(CDVInvokedUrlCommand *)command {
+    NSString *room = nil;
+    NSString *url = nil;
+    NSString *password = @"";
+    NSString *moderatorPassword = @"";
+    if ([command.arguments count] >= 2) {
+        room = [command.arguments objectAtIndex:0];
+        url = [command.arguments objectAtIndex:1];
+    }
+    if ([command.arguments count] >= 3) {
+        password = [command.arguments objectAtIndex:2];
+    }
+    if ([command.arguments count] == 4) {
+        moderatorPassword = [command.arguments objectAtIndex:3];
+    }
+    if (!room || !url || !password || !moderatorPassword) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+        void (^_callback)(BOOL success, NSDictionary *result);
+        
+        _callback = ^(BOOL success, NSDictionary *result) {
+            CDVPluginResult *pluginResult;
+            if (success) {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_OK
+                                messageAsDictionary:result
+                                ];
+            } else {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_ERROR
+                                messageAsDictionary:result
+                                ];
+                
+            }
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+        };
+        [self.sdk createConferenceRoom:room password:password moderatorPassword:moderatorPassword at:url callback:_callback];
+    }
+}
+
 - (void) setSettings:(CDVInvokedUrlCommand *)command {
     NSDictionary *settings = nil;
 
