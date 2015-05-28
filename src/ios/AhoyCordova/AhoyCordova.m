@@ -25,7 +25,7 @@
         self.apiUrl = [command.arguments objectAtIndex:1];
     }
     if (!self.apiUrl || ([self.apiUrl length] <10)) {
-	self.apiUrl = @"wss://uc.ahoyrtc.com/api/";
+	self.apiUrl = @"wss://api.ahoyrtc.com/user.ws/";
     }
 
     if (!self.apiKey) {
@@ -68,10 +68,18 @@
 	void (^_callback)(BOOL success, NSDictionary *result);
 	
 	_callback = ^(BOOL success, NSDictionary *result) {
-    	    CDVPluginResult *pluginResult = [ CDVPluginResult
+    	    CDVPluginResult *pluginResult;
+	    if (success) {
+    		pluginResult = [ CDVPluginResult
                         resultWithStatus    :  CDVCommandStatus_OK
                 	messageAsDictionary : result
-            ];
+        	];
+	    } else {
+    		pluginResult = [ CDVPluginResult
+                        resultWithStatus    :  CDVCommandStatus_ERROR
+                	messageAsDictionary : result
+        	];
+	    }
 	    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 	};
 	[self.commandDelegate runInBackground:^{

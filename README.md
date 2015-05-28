@@ -54,8 +54,9 @@ Enable the "audio" and "voip" background mode capabilities for your app.
        console.log(error);
      },
      "myRoom",
+     "wss://myserver.example.com",
      "myName",
-     "wss://myserver.example.com"
+     "optional password"
    );
  }, false);
 ````

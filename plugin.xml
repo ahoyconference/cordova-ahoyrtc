@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.0.4">
+	version="0.0.5">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -30,6 +30,12 @@
 	            <key>PackageName</key>
 		    <string>$PACKAGE_NAME</string>
 	        </dict>
+    		<dict>
+        	     <key>CFBundleURLSchemes</key>
+        	     <array>
+        		<string>ahoyconference</string>
+        	    </array>
+    		</dict>
 	    </array>
 	</config-file>
 <!--	<config-file target="*-Info.plist" parent="UIBackgroundModes">
@@ -43,6 +49,8 @@
 	<source-file src="src/ios/AhoyCordova/AhoyCordova.m" />
 
 	<header-file src="src/ios/include/AhoySDK/AhoySDK.h" />
+	<header-file src="src/ios/include/AhoySDK/AhoySipCall.h" />
+	<header-file src="src/ios/include/AhoySDK/AhoySipCallDelegateProtocol.h" />
 	<source-file src="src/ios/libAhoySDK.a" framework="true" />
 	<resource-file src="src/ios/AhoySDK.bundle"/>
 	
