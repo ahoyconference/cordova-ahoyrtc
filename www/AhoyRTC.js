@@ -17,6 +17,13 @@ module.exports = {
 	getContactList: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getContactList", []);
 	},
+	callContact: function(successCallback, errorCallback, uuid, audio, video) {
+	    var params = [];
+	    if (uuid != undefined) params.push(uuid);
+	    if (audio != undefined) params.push(audio);
+	    if (video != undefined) params.push(video);
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "callContact", params);
+	},
 	getConferenceList: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getConferenceList", []);
 	},

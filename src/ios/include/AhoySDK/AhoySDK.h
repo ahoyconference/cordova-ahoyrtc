@@ -40,12 +40,16 @@ typedef NS_ENUM(NSInteger, AhoyVideoFormat) {
 - (void)setApiKey:(NSString *)apiKey apiUrl:(NSString *)apiUrl;
 - (void)setApnToken:(NSString *)token;
 - (void)setPushKitToken:(NSString *)token;
+- (void)setViewController:(UIViewController *)vc;
+- (UIViewController *)getViewController;
 - (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 
 - (void)didReceivePushNotification:(NSDictionary *)notification;
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
+- (void)callContactByUuid:(NSString *)uuid presentingViewController:(UIViewController *)viewController callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)getContactInfo:(NSString *)contactUuid withCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getConferenceListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getConferenceInfo:(NSString *)uuid callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)joinConference:(NSString *)uuid presentingViewController:(UIViewController *)viewController callback:(void(^)(BOOL, NSDictionary *))callback;

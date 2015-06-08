@@ -20,4 +20,13 @@
 "leave_conference_confirm_cancel" = "Cancel";
 "share_button" = "Share";
 "invited_to_conference_room %@" = "Please join my Ahoy!Conference.";
+"video_chat_label" = "Video-Chat";
+"mic_mute_label" = "Mikro ausschalten";
+"mic_unmute_label" = "Mikro einschalten";
+"cam_mute_label" = "Kamera ausschalten";
+"cam_unmute_label" = "Kamera einschalten";
+"exit_chat_label" = "beenden";
+"chat_with_label %@ %@" = "Chat mit %@ %@";
+"waiting_for_peer_label" = "Warte auf Teilnehmer...";
+"establishing_secure_connection_label" = "Verbindung wird hergestellt..";
 

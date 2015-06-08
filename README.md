@@ -135,6 +135,38 @@ Enable the "audio" and "voip" background mode capabilities for your app.
  );
 ```
 
+### AhoyUC cloud, login, list all contacts and call the first contact
+
+```js
+ AhoyRTC.login(
+   function(user) {
+     // user logged in
+     AhoyRTC.getContactList(
+       function(contacts) {
+         console.log(contacts);
+         AhoyRTC.callContact(
+           function(result) {
+           },
+           function(error) {
+           },
+           contacts[0].uuid,
+           true,	// audio
+           true		// video
+	 );
+       },
+       function(error) {
+         console.log("getContactList error: "+error);
+       }
+     );
+   },
+   function(error) {
+     console.log("login failed.");
+   },
+   "email@example.com",
+   "password123"
+ );
+```
+
 ### AhoyUC cloud, logout
 
 ```js

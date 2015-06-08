@@ -47,6 +47,7 @@
 
     [self.commandDelegate runInBackground:^{
 	[self.sdk setApiKey:self.apiKey apiUrl:self.apiUrl];
+        [self.sdk setViewController:self.viewController];
         [self.sdk initializeWithCallback:_callback];
     }];
 }
@@ -122,6 +123,50 @@
     [self.commandDelegate runInBackground:^{
 	[self.sdk getContactListWithCallback:_callback];
     }];
+}
+
+- (void) callContact:(CDVInvokedUrlCommand *)command {
+    NSString *uuid = nil;
+    BOOL audio = YES;
+    BOOL video = YES;
+    if ([command.arguments count] >= 1) {
+        uuid = [command.arguments objectAtIndex:0];
+    }
+    if ([command.arguments count] >= 2) {
+        audio = [command.arguments objectAtIndex:1];
+    }
+    if ([command.arguments count] >= 3) {
+        video = [command.arguments objectAtIndex:2];
+    }
+    if (!uuid) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+        void (^_callback)(BOOL success, NSDictionary *result);
+        
+        _callback = ^(BOOL success, NSDictionary *result) {
+            CDVPluginResult *pluginResult;
+            if (success) {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_OK
+                                messageAsDictionary:result
+                                ];
+            } else {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_ERROR
+                                messageAsDictionary:result
+                                ];
+                
+            }
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+        };
+        [self.sdk callContactByUuid:uuid presentingViewController:self.viewController callback:_callback];
+    }
 }
 
 - (void) getConferenceList:(CDVInvokedUrlCommand *)command {

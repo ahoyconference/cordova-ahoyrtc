@@ -20,6 +20,7 @@
 - (void) login:(CDVInvokedUrlCommand *)command;
 - (void) logout:(CDVInvokedUrlCommand *)command;
 - (void) getContactList:(CDVInvokedUrlCommand *)command;
+- (void) callContact:(CDVInvokedUrlCommand *)command;
 - (void) getConferenceList:(CDVInvokedUrlCommand *)command;
 - (void) getConferenceInfo:(CDVInvokedUrlCommand *)command;
 - (void) joinConference:(CDVInvokedUrlCommand *)command;
