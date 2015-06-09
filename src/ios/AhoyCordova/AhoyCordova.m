@@ -52,6 +52,38 @@
     }];
 }
 
+- (void) registerCallListener:(CDVInvokedUrlCommand *)command {
+    __unsafe_unretained AhoyCordova *weakSelf = self;
+
+    self.callListener = ^(AhoyCallEvent event, NSDictionary *session) {
+	NSDictionary *message = @{
+	    @"event": (event == AhoyCallEvent_NewIncomingCall)?@"NewIncomingCall":@"IncomingCallCanceled",
+	    @"call": session
+	};
+	NSLog(@"callListenerCallback %@", message);
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                    resultWithStatus    :  CDVCommandStatus_OK
+                    messageAsDictionary : message
+        ];
+        [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+        [weakSelf.commandDelegate sendPluginResult:pluginResult callbackId:weakSelf.callListenerCallbackId];
+    };
+
+    self.callListenerCallbackId = command.callbackId;
+    self.sdk.callListener = self.callListener;
+}
+
+- (void) unregisterCallListener:(CDVInvokedUrlCommand *)command {
+    self.callListener = nil;
+    self.callListenerCallbackId = nil;
+    self.sdk.callListener = nil;
+
+    CDVPluginResult *pluginResult = [ CDVPluginResult
+    	resultWithStatus    :  CDVCommandStatus_OK
+    ];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void) login:(CDVInvokedUrlCommand *)command {
     if ([command.arguments count] >= 1) {
         self.email = [command.arguments objectAtIndex:0];
@@ -166,6 +198,71 @@
 
         };
         [self.sdk callContactByUuid:uuid presentingViewController:self.viewController callback:_callback];
+    }
+}
+
+- (void) answerIncomingCall:(CDVInvokedUrlCommand *)command {
+    NSString *uuid = nil;
+    BOOL audio = YES;
+    BOOL video = YES;
+NSLog(@">>>>>>>>>>>> arugments %@", command.arguments);
+    if ([command.arguments count] >= 1) {
+        uuid = [command.arguments objectAtIndex:0];
+    }
+    if ([command.arguments count] >= 2) {
+        audio = [command.arguments objectAtIndex:1];
+    }
+    if ([command.arguments count] >= 3) {
+        video = [command.arguments objectAtIndex:2];
+    }
+
+    if (!uuid) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+	CDVPluginResult *pluginResult = [ CDVPluginResult
+                            		    resultWithStatus    :  CDVCommandStatus_OK
+                        		];
+
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+	[self.commandDelegate runInBackground:^{
+	    [self.sdk answerIncomingCall:uuid withAudio:audio andVideo:video];
+	}];
+    }
+}
+
+- (void) rejectIncomingCall:(CDVInvokedUrlCommand *)command {
+    NSString *uuid = nil;
+    NSString *reason = nil;
+    if ([command.arguments count] >= 1) {
+        uuid = [command.arguments objectAtIndex:0];
+    }
+    if ([command.arguments count] >= 2) {
+        reason = [command.arguments objectAtIndex:1];
+    }
+
+    if (!uuid) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+	CDVPluginResult *pluginResult = [ CDVPluginResult
+                            		    resultWithStatus    :  CDVCommandStatus_OK
+                        		];
+
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+	[self.commandDelegate runInBackground:^{
+	    [self.sdk rejectIncomingCall:uuid withReason:reason];
+	}];
     }
 }
 

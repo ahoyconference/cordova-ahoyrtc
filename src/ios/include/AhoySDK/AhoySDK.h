@@ -18,6 +18,14 @@ typedef NS_ENUM(NSInteger, AhoyVideoFormat) {
     AhoyVideoFormat_1280_720_30
 };
 
+typedef NS_ENUM(NSInteger, AhoyCallEvent) {
+    AhoyCallEvent_NewIncomingCall,
+    AhoyCallEvent_IncomingCallCanceled
+};
+
+
+@property (nonatomic, strong) __block void (^callListener)(AhoyCallEvent, NSDictionary *);
+
 + (id)sharedInstance;
 + (void)destroy;
 + (BOOL)isDeviceVideoCapable;
@@ -53,6 +61,8 @@ typedef NS_ENUM(NSInteger, AhoyVideoFormat) {
 - (void)getConferenceListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getConferenceInfo:(NSString *)uuid callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)joinConference:(NSString *)uuid presentingViewController:(UIViewController *)viewController callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)answerIncomingCall:(NSString *)uuid withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo;
+- (void)rejectIncomingCall:(NSString *)uuid withReason:(NSString *)reason;
 
 // AhoyConference
 - (void)joinConferenceRoom:(NSString *)roomName name:(NSString *)name password:(NSString *)password at:(NSString *)wsUrl presentingViewController:(UIViewController *)viewController callback:(void (^)(BOOL, NSDictionary *))callback;

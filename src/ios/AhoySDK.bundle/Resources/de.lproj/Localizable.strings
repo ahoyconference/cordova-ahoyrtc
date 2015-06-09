@@ -27,6 +27,7 @@
 "cam_unmute_label" = "Kamera einschalten";
 "exit_chat_label" = "beenden";
 "chat_with_label %@ %@" = "Chat mit %@ %@";
+"chat_from_label %@" = "Chat von %@";
 "waiting_for_peer_label" = "Warte auf Teilnehmer...";
 "establishing_secure_connection_label" = "Verbindung wird hergestellt..";
 

@@ -1,9 +1,53 @@
+var AhoyRtcCalls = {};
 module.exports = {
 	init: function(successCallback, errorCallback, apiKey, apiUrl) {
 	    var params = [];
 	    if (apiKey != undefined) params.push(apiKey);
 	    if (apiUrl != undefined) params.push(apiUrl);
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "init", params);
+	},
+	registerCallListener: function(successCallback, errorCallback, eventCallback) {
+    	    cordova.exec(
+    		function(event) {
+    		    if (event.event == "NewIncomingCall") {
+    			if (event.call && event.call.uuid) {
+    			    AhoyRtcCalls[event.call.uuid] = {
+    				uuid: event.call.uuid,
+    				from: event.call.from,
+    				audio: (event.call.audio == "YES")?true:false,
+    				video: (event.call.video == "YES")?true:false,
+    				answer: function(answerSuccessCallback, answerErrorCallback, audio, video) {
+    				    var params = [ event.call.uuid ];
+    				    if (audio != undefined) { params.push(audio) } else { params.push(true) };
+    				    if (video != undefined) { params.push(video) } else { params.push(true) };
+    				    cordova.exec(answerSuccessCallback, answerErrorCallback, "AhoyRTC", "answerIncomingCall", params);
+    				    delete AhoyRtcCalls[event.call.uuid];
+    				},
+    				reject: function(rejectSuccessCallback, rejectErrorCallback, reason) {
+    				    var params = [ event.call.uuid ];
+    				    if (reason != undefined) params.push(reason);
+    				    console.log("rejecting "+JSON.stringify(params));
+    				    cordova.exec(rejectSuccessCallback, rejectErrorCallback, "AhoyRTC", "rejectIncomingCall", params);
+    				    delete AhoyRtcCalls[event.call.uuid];
+    				}
+    			    };
+    			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
+    			}
+    		    } else if (event.event = "IncomingCallCanceled") {
+    			if (event.call && event.call.uuid && (AhoyRtcCalls[event.call.uuid] != undefined)) {
+    			    AhoyRtcCalls[event.call.uuid].answer = null;
+    			    AhoyRtcCalls[event.call.uuid].reject = null;
+    			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
+    			    delete AhoyRtcCalls[event.call.uuid];
+    			}
+    		    }
+    		},
+		errorCallback, "AhoyRTC", "registerCallListener", []
+	    );
+	    successCallback();
+	},
+	unregisterCallListener: function(successCallback, errorCallback) {
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "unregisterCallListener", []);
 	},
 	login: function(successCallback, errorCallback, email, password) {
 	    var params = [];

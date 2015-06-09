@@ -167,6 +167,47 @@ Enable the "audio" and "voip" background mode capabilities for your app.
  );
 ```
 
+### AhoyUC cloud, handle incoming call in JavaScript
+```js
+    AhoyRTC.registerCallListener(
+	function() {
+	    console.log("registered incoming call listener");
+	},
+	function(error) {
+	    console.log("error registering incoming call listener");
+	},
+	function(event, call) {
+	    if (event == "NewIncomingCall") {
+		if (confirm("Answer incoming call?") == true){
+		    call.answer(
+			function() {
+			    console.log("answered incoming call");
+			},
+			function(error) {
+			    console.log(error);
+			},
+			true,	// enable audio
+			true	// enable video
+		    );
+		} else {
+		    call.reject(
+			function() {
+			    console.log("answered incoming call");
+			},
+			function(error) {
+			    console.log(error);
+			},
+			"gone fishing..."
+		    );
+		}
+	    } else if (event == "IncomingCallCanceled") {
+		console.log("Incoming call canceled: "+JSON.stringify(call));
+	    }
+	}
+    );
+```
+
+
 ### AhoyUC cloud, logout
 
 ```js

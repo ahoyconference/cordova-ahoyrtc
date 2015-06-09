@@ -14,9 +14,15 @@
 @property (strong, nonatomic) NSString *apiUrl;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *callListenerCallbackId;
+@property (strong, nonatomic) __block void (^callListener)(AhoyCallEvent, NSDictionary *);
 
 - (void) pluginInitialize;
 - (void) init:(CDVInvokedUrlCommand *)command;
+- (void) registerCallListener:(CDVInvokedUrlCommand *)command;
+- (void) unregisterCallListener:(CDVInvokedUrlCommand *)command;
+- (void) answerIncomingCall:(CDVInvokedUrlCommand *)command;
+- (void) rejectIncomingCall:(CDVInvokedUrlCommand *)command;
 - (void) login:(CDVInvokedUrlCommand *)command;
 - (void) logout:(CDVInvokedUrlCommand *)command;
 - (void) getContactList:(CDVInvokedUrlCommand *)command;
