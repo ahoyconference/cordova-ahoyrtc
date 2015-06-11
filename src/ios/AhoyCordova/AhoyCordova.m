@@ -159,8 +159,8 @@
 
 - (void) callContact:(CDVInvokedUrlCommand *)command {
     NSString *uuid = nil;
-    BOOL audio = YES;
-    BOOL video = YES;
+    NSNumber *audio = nil;
+    NSNumber *video = nil;
     if ([command.arguments count] >= 1) {
         uuid = [command.arguments objectAtIndex:0];
     }
@@ -170,6 +170,9 @@
     if ([command.arguments count] >= 3) {
         video = [command.arguments objectAtIndex:2];
     }
+    if (!audio) audio = @YES;
+    if (!video) video = @YES;
+
     if (!uuid) {
         CDVPluginResult *pluginResult = [ CDVPluginResult
                                          resultWithStatus    :  CDVCommandStatus_ERROR
@@ -203,8 +206,8 @@
 
 - (void) answerIncomingCall:(CDVInvokedUrlCommand *)command {
     NSString *uuid = nil;
-    BOOL audio = YES;
-    BOOL video = YES;
+    NSNumber *audio = @YES;
+    NSNumber *video = @YES;
 
     if ([command.arguments count] >= 1) {
         uuid = [command.arguments objectAtIndex:0];
@@ -215,6 +218,8 @@
     if ([command.arguments count] >= 3) {
         video = [command.arguments objectAtIndex:2];
     }
+    if (!audio) audio = @YES;
+    if (!video) video = @YES;
 
     if (!uuid) {
         CDVPluginResult *pluginResult = [ CDVPluginResult
@@ -231,7 +236,7 @@
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
 	[self.commandDelegate runInBackground:^{
-	    [self.sdk answerIncomingCall:uuid withAudio:audio andVideo:video];
+	    [self.sdk answerIncomingCall:uuid withAudio:audio.boolValue andVideo:video.boolValue];
 	}];
     }
 }
