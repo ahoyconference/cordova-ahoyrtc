@@ -60,7 +60,7 @@
 	    @"event": (event == AhoyCallEvent_NewIncomingCall)?@"NewIncomingCall":@"IncomingCallCanceled",
 	    @"call": session
 	};
-	NSLog(@"callListenerCallback %@", message);
+
         CDVPluginResult *pluginResult = [ CDVPluginResult
                     resultWithStatus    :  CDVCommandStatus_OK
                     messageAsDictionary : message
@@ -205,7 +205,7 @@
     NSString *uuid = nil;
     BOOL audio = YES;
     BOOL video = YES;
-NSLog(@">>>>>>>>>>>> arugments %@", command.arguments);
+
     if ([command.arguments count] >= 1) {
         uuid = [command.arguments objectAtIndex:0];
     }

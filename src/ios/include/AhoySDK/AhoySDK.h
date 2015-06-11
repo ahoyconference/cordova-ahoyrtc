@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 + (BOOL)isVideoCaptureAvailable;
 + (NSInteger)videoCaptureFormatForConferencing;
 + (NSInteger)videoCaptureFormatForCalling;
++ (NSString *)callViewControllerNameByApiKey:(NSString *)apiKey;
++ (NSString *)conferenceViewControllerNameByApiKey:(NSString *)apiKey;
 
 // generic
 - (NSDictionary *)getSettings;

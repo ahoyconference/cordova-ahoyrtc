@@ -5,29 +5,35 @@
   Created by kapejod on 16.02.15.
   Copyright (c) 2015 AhoyRTC. All rights reserved.
 */
-"room_label %@" = "Room '%@'";
+"room_label %@" = "Conference Room '%@'";
 "room_label %@ (%@)" = "Room '%@' (%@)";
 "leave_button" = "Leave room";
 "empty_message_label" = "Waiting for somebody to join...";
 "participants_label %d" = "%d other participants";
 "lock_conference_label" = "Lock conference";
-"speaker_detection_label" = "Speaker detection";
+"unlock_conference_label" = "Unlock conference";
+"enable_speaker_detection_label" = "Enable speaker detection";
+"disable_speaker_detection_label" = "Disable speaker detection";
 "microphone_label" = "Microphone";
 "camera_label" = "Camera";
 "leave_conference_confirm_message" = "Do you want to leave this conference room?";
 "leave_conference_confirm_title" = "Leave conference?";
 "leave_conference_confirm_ok" = "OK";
 "leave_conference_confirm_cancel" = "Cancel";
-"share_button" = "Share";
+"share_button" = "Invite participants";
 "invited_to_conference_room %@" = "Please join my Ahoy!Conference.";
-"video_chat_label" = "Video-Chat";
-"mic_mute_label" = "Mikro ausschalten";
-"mic_unmute_label" = "Mikro einschalten";
-"cam_mute_label" = "Kamera ausschalten";
-"cam_unmute_label" = "Kamera einschalten";
-"exit_chat_label" = "beenden";
-"chat_with_label %@ %@" = "Chat mit %@ %@";
-"chat_from_label %@" = "Chat von %@";
-"waiting_for_peer_label" = "Warte auf Teilnehmer...";
-"establishing_secure_connection_label" = "Verbindung wird hergestellt..";
+"video_chat_label" = "Video Chat";
+"video_call_label" = "Video Call";
+"mic_mute_label" = "Mute microphone";
+"mic_unmute_label" = "Unmute microphone";
+"cam_mute_label" = "Mute camera";
+"cam_unmute_label" = "Unmute camera";
+"exit_chat_label" = "close";
+"exit_call_label" = "close";
+"chat_with_label %@ %@" = "Chat with %@ %@";
+"chat_from_label %@" = "Chat from %@";
+"call_with_label %@ %@" = "Call with %@ %@";
+"call_from_label %@" = "Call from %@";
+"waiting_for_peer_label" = "Waiting for peer...";
+"establishing_secure_connection_label" = "Establishing secure connection..";
 
