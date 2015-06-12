@@ -21,6 +21,11 @@
 "leave_conference_confirm_ok" = "OK";
 "leave_conference_confirm_cancel" = "Abbrechen";
 "share_button" = "Teilnehmer einladen";
+"edit_conference_description_title" = "Thema bearbeiten";
+"edit_conference_description_text" = "Geben Sie ein Thema für diese Konferenz ein:";
+"edit_conference_description_button_ok" = "Ok";
+"edit_conference_description_button_cancel" = "Abbrechen";
+"please_set_conference_description" = "Bitte setzen Sie ein Thema für diese Konferenz.";
 "invited_to_conference_room %@" = "Bitte nehmen Sie an meiner Ahoy!Conference teil.";
 "video_chat_label" = "Video-Chat";
 "video_call_label" = "Video Anruf";
