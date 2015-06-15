@@ -29,6 +29,8 @@
 "invited_to_conference_room %@" = "Please join my Ahoy!Conference.";
 "video_chat_label" = "Video Chat";
 "video_call_label" = "Video Call";
+"incoming_call_button_answer" = "Answer";
+"incoming_call_button_reject" = "Reject";
 "mic_mute_label" = "Mute microphone";
 "mic_unmute_label" = "Unmute microphone";
 "cam_mute_label" = "Mute camera";

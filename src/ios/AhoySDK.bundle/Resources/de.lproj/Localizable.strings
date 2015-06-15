@@ -33,6 +33,8 @@
 "mic_unmute_label" = "Mikro einschalten";
 "cam_mute_label" = "Kamera ausschalten";
 "cam_unmute_label" = "Kamera einschalten";
+"incoming_call_button_answer" = "Annehmen";
+"incoming_call_button_reject" = "Ablehnen";
 "exit_chat_label" = "beenden";
 "exit_call_label" = "beenden";
 "chat_with_label %@ %@" = "Chat mit %@ %@";

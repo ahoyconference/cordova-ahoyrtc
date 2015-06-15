@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.0.8">
+	version="0.0.10">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -47,6 +47,9 @@
 
 	<header-file src="src/ios/AhoyCordova/AhoyCordova.h" />
 	<source-file src="src/ios/AhoyCordova/AhoyCordova.m" />
+
+	<header-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.h" />
+	<source-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.m" />
 
 	<header-file src="src/ios/include/AhoySDK/AhoySDK.h" />
 	<header-file src="src/ios/include/AhoySDK/AhoySipCall.h" />
