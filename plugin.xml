@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.0.10">
+	version="0.0.11">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -70,6 +70,7 @@
 	<framework src="AssetsLibrary.framework" />
 	<framework src="MobileCoreServices.framework" />
 	<framework src="CoreLocation.framework" />
+	<framework src="PushKit.framework" />
 	<framework src="libsqlite3.dylib" />
 	<framework src="libstdc++.dylib" />
 	<framework src="libc++.dylib" />

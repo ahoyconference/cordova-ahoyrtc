@@ -26,7 +26,8 @@
 "edit_conference_description_button_cancel" = "Cancel";
 "please_set_conference_description" = "Please set a topic for the conference.";
 "share_button" = "Invite participants";
-"invited_to_conference_room %@" = "Please join my Ahoy!Conference.";
+"invited_to_conference_room %@" = "Please join my Ahoy!Conference romm '%@'.\n";
+"invited_to_conference_subject" = "Ahoy!Conference invitation";
 "video_chat_label" = "Video Chat";
 "video_call_label" = "Video Call";
 "incoming_call_button_answer" = "Answer";
