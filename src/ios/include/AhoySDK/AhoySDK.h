@@ -48,8 +48,6 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 
 // AhoyUC
 - (void)setApiKey:(NSString *)apiKey apiUrl:(NSString *)apiUrl;
-- (void)setApnToken:(NSString *)token;
-- (void)setPushKitToken:(NSString *)token;
 - (void)setViewController:(UIViewController *)vc;
 - (UIViewController *)getViewController;
 - (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback;

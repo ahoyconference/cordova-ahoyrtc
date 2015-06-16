@@ -6,6 +6,12 @@ module.exports = {
 	    if (apiUrl != undefined) params.push(apiUrl);
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "init", params);
 	},
+	setApiCredentials: function(successCallback, errorCallback, apiKey, apiUrl) {
+	    var params = [];
+	    if (apiKey != undefined) params.push(apiKey);
+	    if (apiUrl != undefined) params.push(apiUrl);
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "setApiCredentials", params);
+	},
 	registerCallListener: function(successCallback, errorCallback, eventCallback) {
     	    cordova.exec(
     		function(event) {
@@ -104,11 +110,5 @@ module.exports = {
 	    var params = [];
 	    if (settings != undefined) params.push(JSON.stringify(settings));
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "setSettings", params);
-	},
-	setPushToken: function(successCallback, errorCallback, tokenType, token) {
-	    var params = [];
-	    if (tokenType != undefined) params.push(tokenType);
-	    if (token != undefined) params.push(token);
-    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "setPushToken", params);
 	}
 }

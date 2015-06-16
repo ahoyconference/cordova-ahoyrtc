@@ -52,6 +52,39 @@
     }];
 }
 
+- (void) setApiCredentials:(CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult = nil;
+
+    if ([command.arguments count] >= 1) {
+        self.apiKey = [command.arguments objectAtIndex:0];
+    }
+    if ([command.arguments count] == 2) {
+        self.apiUrl = [command.arguments objectAtIndex:1];
+    }
+    if (!self.apiUrl || ([self.apiUrl length] <10)) {
+	self.apiUrl = @"wss://api.ahoyrtc.com/user.ws/";
+    }
+
+    if (!self.apiKey) {
+        pluginResult = [ CDVPluginResult
+                        resultWithStatus    :  CDVCommandStatus_ERROR
+                        messageAsString : @"Missing mandatory parameters"
+        ];
+        return;
+    }
+
+
+    [self.commandDelegate runInBackground:^{
+	[self.sdk setApiKey:self.apiKey apiUrl:self.apiUrl];
+
+    }];
+
+    pluginResult = [ CDVPluginResult
+                    resultWithStatus    :  CDVCommandStatus_OK
+    ];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void) registerCallListener:(CDVInvokedUrlCommand *)command {
     __unsafe_unretained AhoyCordova *weakSelf = self;
 
@@ -499,36 +532,6 @@
 	}
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
-}
-
-- (void) setPushToken:(CDVInvokedUrlCommand *)command {
-    CDVPluginResult *pluginResult = nil;
-    NSString *tokenType;
-    NSString *token;
-
-    if ([command.arguments count] >= 2) {
-        tokenType = [command.arguments objectAtIndex:0];
-        token = [command.arguments objectAtIndex:1];
-	if ([tokenType isEqualToString:@"apn"]) {
-	    [self.sdk setApnToken:token];
-	} else if ([tokenType isEqualToString:@"apk"]) {
-	    [self.sdk setPushKitToken:token];
-	} else {
-    	    pluginResult = [ CDVPluginResult
-    		resultWithStatus    :  CDVCommandStatus_ERROR
-    	        messageAsString : @"invalid token type"
-    	    ];
-	}
-        pluginResult = [ CDVPluginResult
-    	    resultWithStatus    :  CDVCommandStatus_OK
-        ];
-    } else {
-        pluginResult = [ CDVPluginResult
-    	    resultWithStatus    :  CDVCommandStatus_ERROR
-    	    messageAsString : @"Missing mandatory parameter"
-        ];
-    }
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 @end

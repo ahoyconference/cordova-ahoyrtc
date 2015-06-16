@@ -19,6 +19,7 @@
 
 - (void) pluginInitialize;
 - (void) init:(CDVInvokedUrlCommand *)command;
+- (void) setApiCredentials:(CDVInvokedUrlCommand *)command;
 - (void) registerCallListener:(CDVInvokedUrlCommand *)command;
 - (void) unregisterCallListener:(CDVInvokedUrlCommand *)command;
 - (void) answerIncomingCall:(CDVInvokedUrlCommand *)command;
@@ -34,5 +35,4 @@
 - (void) createConferenceRoomOnServer:(CDVInvokedUrlCommand *)command;
 - (void) getSettings:(CDVInvokedUrlCommand *)command;
 - (void) setSettings:(CDVInvokedUrlCommand *)command;
-- (void) setPushToken:(CDVInvokedUrlCommand *)command;
 @end
