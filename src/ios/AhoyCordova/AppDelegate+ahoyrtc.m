@@ -16,7 +16,7 @@
     NSDictionary *userInfo = [notification userInfo];
     NSString *uuid = nil;
     NSNumber *incoming = nil;
-
+    NSLog(@"AHOY: handleActionWithIdentifier:%@ forLocalNotification:%@notification", identifier, notification);
     if (userInfo) {
         NSDictionary *ahoy = [userInfo objectForKey:@"ahoy"];
         if (ahoy) {
