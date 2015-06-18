@@ -52,7 +52,6 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 - (UIViewController *)getViewController;
 - (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 
-- (void)didReceivePushNotification:(NSDictionary *)notification;
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
