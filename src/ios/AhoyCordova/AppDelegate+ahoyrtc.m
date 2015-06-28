@@ -29,7 +29,7 @@
 
     if ([identifier isEqualToString:@"AHOY_ACTION_ANSWER"]) {
         if (uuid && incoming && [incoming boolValue]) {
-            [[AhoySDK sharedInstance] answerIncomingCall:uuid withAudio:YES andVideo:YES];
+            [[AhoySDK sharedInstance] answerIncomingCall:uuid withAudio:YES andVideo:YES callback:nil];
         }
     } else if ([identifier isEqualToString:@"AHOY_ACTION_REJECT"]) {
         if (uuid && incoming && [incoming boolValue]) {

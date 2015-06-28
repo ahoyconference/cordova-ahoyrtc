@@ -27,12 +27,17 @@
 - (void) login:(CDVInvokedUrlCommand *)command;
 - (void) logout:(CDVInvokedUrlCommand *)command;
 - (void) getContactList:(CDVInvokedUrlCommand *)command;
+- (void) getContactInfo:(CDVInvokedUrlCommand *)command;
 - (void) callContact:(CDVInvokedUrlCommand *)command;
+- (void) callAddress:(CDVInvokedUrlCommand *)command;
 - (void) getConferenceList:(CDVInvokedUrlCommand *)command;
 - (void) getConferenceInfo:(CDVInvokedUrlCommand *)command;
 - (void) joinConference:(CDVInvokedUrlCommand *)command;
 - (void) joinConferenceRoomOnServer:(CDVInvokedUrlCommand *)command;
+- (void) joinConferenceOnServerWithInvitation:(CDVInvokedUrlCommand *)command;
 - (void) createConferenceRoomOnServer:(CDVInvokedUrlCommand *)command;
 - (void) getSettings:(CDVInvokedUrlCommand *)command;
 - (void) setSettings:(CDVInvokedUrlCommand *)command;
+- (void) setPresenceStatus:(CDVInvokedUrlCommand *)command;
+- (void) getPresenceStatus:(CDVInvokedUrlCommand *)command;
 @end

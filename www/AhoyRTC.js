@@ -67,12 +67,34 @@ module.exports = {
 	getContactList: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getContactList", []);
 	},
+	getContactInfo: function(successCallback, errorCallback, uuid) {
+	    var params = [];
+	    if (uuid != undefined) params.push(uuid);
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getContactInfo", params);
+	},
 	callContact: function(successCallback, errorCallback, uuid, audio, video) {
 	    var params = [];
 	    if (uuid != undefined) params.push(uuid);
 	    if (audio != undefined) params.push(audio);
 	    if (video != undefined) params.push(video);
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "callContact", params);
+	},
+	callAddress: function(successCallback, errorCallback, address, metaData, customViewController, audio, video) {
+	    var params = [];
+	    if (address != undefined) params.push(address);
+	    if (metaData != undefined) {
+		params.push(JSON.stringify(metaData));
+	    } else {
+		params.push(JSON.stringify({}));
+	    }
+	    if (customViewController != undefined) {
+		params.push(customViewController);
+	    } else {
+		params.push("AhoyCallViewController");
+	    }
+	    if (audio != undefined) params.push(audio);
+	    if (video != undefined) params.push(video);
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "callAddress", params);
 	},
 	getConferenceList: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getConferenceList", []);
@@ -103,6 +125,12 @@ module.exports = {
 	    if (moderatorPassword != undefined) params.push(moderatorPassword);
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "createConferenceRoomOnServer", params);
 	},
+	joinConferenceOnServerWithInvitation: function(successCallback, errorCallback, url, invitation) {
+	    var params = [];
+	    if (url != undefined) params.push(url);
+	    if (invitation != undefined) params.push(invitation);
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "joinConferenceOnServerWithInvitation", params);
+	},
 	getSettings: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getSettings", []);
 	},
@@ -110,5 +138,17 @@ module.exports = {
 	    var params = [];
 	    if (settings != undefined) params.push(JSON.stringify(settings));
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "setSettings", params);
+	},
+	setPresenceStatus: function(successCallback, errorCallback, status) {
+	    var params = [];
+	    if ((status == "available") || (status == "dnd")) {
+		params.push(status);
+    		cordova.exec(successCallback, errorCallback, "AhoyRTC", "setPresenceStatus", params);
+	    } else {
+		errorCallback({error:"invalid_presence_status"});
+	    }
+	},
+	getPresenceStatus: function(successCallback, errorCallback) {
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getPresenceStatus", []);
 	}
 }

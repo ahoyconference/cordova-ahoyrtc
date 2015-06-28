@@ -190,6 +190,42 @@
     }];
 }
 
+- (void) getContactInfo:(CDVInvokedUrlCommand *)command {
+    NSString *uuid = nil;
+    if ([command.arguments count] == 1) {
+        uuid = [command.arguments objectAtIndex:0];
+    }
+    if (!uuid) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+	void (^_callback)(BOOL success, NSDictionary *result);
+
+	_callback = ^(BOOL success, NSDictionary *result) {
+	    CDVPluginResult *pluginResult = nil;
+	    if (success) {
+    		pluginResult = [ CDVPluginResult
+            	    resultWithStatus    :  CDVCommandStatus_OK
+            	    messageAsDictionary: [result objectForKey:@"contact"]
+        	];
+    	    } else {
+    	        pluginResult = [ CDVPluginResult
+            	    resultWithStatus    :  CDVCommandStatus_ERROR
+        	];
+    	    }
+	    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	};
+
+	[self.commandDelegate runInBackground:^{
+	    [self.sdk getContactInfo:uuid withCallback:_callback];
+	}];
+    }
+}
+
 - (void) callContact:(CDVInvokedUrlCommand *)command {
     NSString *uuid = nil;
     NSNumber *audio = nil;
@@ -233,7 +269,65 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
         };
-        [self.sdk callContactByUuid:uuid presentingViewController:self.viewController callback:_callback];
+        [self.sdk callContactByUuid:uuid withAudio:audio.boolValue andVideo:video.boolValue presentingViewController:self.viewController callback:_callback];
+    }
+}
+
+- (void) callAddress:(CDVInvokedUrlCommand *)command {
+    NSString *address = nil;
+    NSString *viewControllerName = nil;
+    NSDictionary *metaData = nil;
+    NSNumber *audio = nil;
+    NSNumber *video = nil;
+
+    if ([command.arguments count] >= 1) {
+        address = [command.arguments objectAtIndex:0];
+    }
+    if ([command.arguments count] >= 2) {
+        NSData *jsonData = [[command.arguments objectAtIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *e;
+        metaData = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+    }
+    if ([command.arguments count] >= 3) {
+        viewControllerName = [command.arguments objectAtIndex:2];
+    }
+    if ([command.arguments count] >= 4) {
+        audio = [command.arguments objectAtIndex:3];
+    }
+    if ([command.arguments count] >= 5) {
+        video = [command.arguments objectAtIndex:4];
+    }
+    if (!audio) audio = @YES;
+    if (!video) video = @YES;
+
+    if (!address || !viewControllerName) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+        void (^_callback)(BOOL success, NSDictionary *result);
+        
+        _callback = ^(BOOL success, NSDictionary *result) {
+            CDVPluginResult *pluginResult;
+            if (success) {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_OK
+                                messageAsDictionary:result
+                                ];
+            } else {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_ERROR
+                                messageAsDictionary:result
+                                ];
+                
+            }
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+        };
+        [self.sdk callAddress:address withAudio:audio.boolValue andVideo:video.boolValue metaData:metaData presentingViewController:self.viewController viewControllerName:viewControllerName callback:_callback];
     }
 }
 
@@ -262,14 +356,28 @@
         
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } else {
-	CDVPluginResult *pluginResult = [ CDVPluginResult
-                            		    resultWithStatus    :  CDVCommandStatus_OK
-                        		];
+        void (^_callback)(BOOL success, NSDictionary *result);
+        
+        _callback = ^(BOOL success, NSDictionary *result) {
+            CDVPluginResult *pluginResult;
+            if (success) {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_OK
+                                messageAsDictionary:result
+                                ];
+            } else {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_ERROR
+                                messageAsDictionary:result
+                                ];
+                
+            }
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        };
 
-	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
 	[self.commandDelegate runInBackground:^{
-	    [self.sdk answerIncomingCall:uuid withAudio:audio.boolValue andVideo:video.boolValue];
+	    [self.sdk answerIncomingCall:uuid withAudio:audio.boolValue andVideo:video.boolValue callback:_callback];
 	}];
     }
 }
@@ -363,7 +471,6 @@
     }
 }
 
-
 - (void) joinConference:(CDVInvokedUrlCommand *)command {
     NSString *uuid = nil;
     if ([command.arguments count] == 1) {
@@ -441,6 +548,48 @@
 
         };
         [self.sdk joinConferenceRoom:room name:name password:password at:url presentingViewController:self.viewController callback:_callback];
+    }
+}
+
+- (void) joinConferenceOnServerWithInvitation:(CDVInvokedUrlCommand *)command {
+    NSDictionary *invitation = nil;
+    NSString *url = nil;
+
+    if ([command.arguments count] >= 2) {
+        url = [command.arguments objectAtIndex:0];
+
+        NSData *jsonData = [[command.arguments objectAtIndex:1] dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *e;
+        invitation = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:jsonData options:nil error:&e];
+    }
+    if (!url || !invitation) {
+        CDVPluginResult *pluginResult = [ CDVPluginResult
+                                         resultWithStatus    :  CDVCommandStatus_ERROR
+                                         messageAsString:@"missing_mandatory_parameter"
+                                         ];
+        
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } else {
+        void (^_callback)(BOOL success, NSDictionary *result);
+        
+        _callback = ^(BOOL success, NSDictionary *result) {
+            CDVPluginResult *pluginResult;
+            if (success) {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_OK
+                                messageAsDictionary:result
+                                ];
+            } else {
+                pluginResult = [ CDVPluginResult
+                                resultWithStatus    :  CDVCommandStatus_ERROR
+                                messageAsDictionary:result
+                                ];
+                
+            }
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+        };
+        [self.sdk joinConferenceWithInvitation:invitation at:url presentingViewController:self.viewController callback:_callback];
     }
 }
 
@@ -529,6 +678,43 @@
     	    pluginResult = [ CDVPluginResult
     	        resultWithStatus    :  CDVCommandStatus_ERROR
     	    ];
+	}
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
+- (void) getPresenceStatus:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+	CDVPluginResult *pluginResult = nil;
+	NSString *presenceStatus = [self.sdk getPresenceStatus];
+	if (presenceStatus) {
+	    pluginResult = [ CDVPluginResult
+		resultWithStatus    :  CDVCommandStatus_OK
+		messageAsString: presenceStatus
+	    ];
+	} else {
+    	    pluginResult = [ CDVPluginResult
+    	        resultWithStatus    :  CDVCommandStatus_ERROR
+    	    ];
+	}
+	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
+- (void) setPresenceStatus:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+	CDVPluginResult *pluginResult;
+	if (command.arguments.count >= 1) {
+	    NSString *presenceStatus = [command.arguments objectAtIndex:0];
+	    [self.sdk setPresenceStatus:presenceStatus];
+	    pluginResult = [ CDVPluginResult
+		resultWithStatus    :  CDVCommandStatus_OK
+	    ];
+	} else {
+	    pluginResult = [ CDVPluginResult
+		resultWithStatus    :  CDVCommandStatus_ERROR
+    		messageAsString : @"Missing mandatory parameter"
+	    ];
 	}
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
