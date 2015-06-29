@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, AhoyVideoFormat) {
 
 typedef NS_ENUM(NSInteger, AhoyCallEvent) {
     AhoyCallEvent_NewIncomingCall,
-    AhoyCallEvent_IncomingCallCanceled
+    AhoyCallEvent_IncomingCallCanceled,
+    AhoyCallEvent_CallStatus
 };
 
 

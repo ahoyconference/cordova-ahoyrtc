@@ -88,12 +88,34 @@
 - (void) registerCallListener:(CDVInvokedUrlCommand *)command {
     __unsafe_unretained AhoyCordova *weakSelf = self;
 
-    self.callListener = ^(AhoyCallEvent event, NSDictionary *session) {
-	NSDictionary *message = @{
-	    @"event": (event == AhoyCallEvent_NewIncomingCall)?@"NewIncomingCall":@"IncomingCallCanceled",
-	    @"call": session
-	};
-
+    self.callListener = ^(AhoyCallEvent event, NSDictionary *data) {
+	NSDictionary *message = nil;
+	switch (event) {
+	    case AhoyCallEvent_NewIncomingCall:
+		message = @{
+		    @"event": @"NewIncomingCall",
+		    @"call": data
+		};
+		break;
+	    case AhoyCallEvent_IncomingCallCanceled:
+		message = @{
+		    @"event": @"IncomingCallCanceled",
+		    @"call": data
+		};
+		break;
+	    case AhoyCallEvent_CallStatus:
+		message = @{
+		    @"event": @"CallStatus",
+		    @"data": data
+		};
+		break;
+	    default:
+		message = @{
+		    @"event": @"UnknownEvent"
+		};
+	}
+	
+	
         CDVPluginResult *pluginResult = [ CDVPluginResult
                     resultWithStatus    :  CDVCommandStatus_OK
                     messageAsDictionary : message

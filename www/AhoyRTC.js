@@ -39,12 +39,16 @@ module.exports = {
     			    };
     			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
     			}
-    		    } else if (event.event = "IncomingCallCanceled") {
+    		    } else if (event.event == "IncomingCallCanceled") {
     			if (event.call && event.call.uuid && (AhoyRtcCalls[event.call.uuid] != undefined)) {
     			    AhoyRtcCalls[event.call.uuid].answer = null;
     			    AhoyRtcCalls[event.call.uuid].reject = null;
     			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
     			    delete AhoyRtcCalls[event.call.uuid];
+    			}
+    		    } else if (event.event == "CallStatus") {
+    			if (event.data) {
+    			    eventCallback(event.event, event.data);
     			}
     		    }
     		},
