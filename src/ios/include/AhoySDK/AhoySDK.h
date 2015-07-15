@@ -13,6 +13,7 @@
 @interface AhoySDK : NSObject
 
 typedef NS_ENUM(NSInteger, AhoyVideoFormat) {
+    AhoyVideoFormat_320_240_30,
     AhoyVideoFormat_352_288_30,
     AhoyVideoFormat_640_480_30,
     AhoyVideoFormat_1280_720_30
@@ -56,7 +57,7 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 - (void)setPresenceStatus:(NSString *)status;
 - (NSString *)getPresenceStatus;
 - (UIViewController *)getViewController;
-- (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback;
+- (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback debugBuild:(BOOL)isDebugBuild;
 
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;

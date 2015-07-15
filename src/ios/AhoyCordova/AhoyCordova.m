@@ -48,7 +48,11 @@
     [self.commandDelegate runInBackground:^{
 	[self.sdk setApiKey:self.apiKey apiUrl:self.apiUrl];
         [self.sdk setViewController:self.viewController];
-        [self.sdk initializeWithCallback:_callback];
+#ifdef DEBUG
+        [self.sdk initializeWithCallback:_callback debugBuild:YES];
+#else
+        [self.sdk initializeWithCallback:_callback debugBuild:NO];
+#endif
     }];
 }
 
