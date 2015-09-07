@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.0.19">
+	version="0.0.20">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -72,5 +72,6 @@
 	<framework src="libSystem.dylib" />
 	<framework src="libutil.dylib" />
 	<framework src="libicucore.dylib" />
+	<framework src="VideoToolbox.framework" />
     </platform>
 </plugin>
