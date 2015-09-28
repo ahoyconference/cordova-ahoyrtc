@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.0.21">
+	version="0.1.0">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -24,14 +24,6 @@
 	    </feature>
 	</config-file>
 	
-	<config-file target="*-Info.plist" parent="CFBundleURLTypes">
-	    <array>
-	        <dict>
-	            <key>PackageName</key>
-		    <string>$PACKAGE_NAME</string>
-	        </dict>
-	    </array>
-	</config-file>
 	<config-file target="*-Info.plist" parent="UIBackgroundModes">
 	    <array>
 		<string>audio</string>
@@ -46,32 +38,6 @@
 	<header-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.h" />
 	<source-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.m" />
 
-	<header-file src="src/ios/include/AhoySDK/AhoySDK.h" />
-	<header-file src="src/ios/include/AhoySDK/AhoySipCall.h" />
-	<header-file src="src/ios/include/AhoySDK/AhoySipCallDelegateProtocol.h" />
-	<source-file src="src/ios/libAhoySDK.a" framework="true" />
-	<resource-file src="src/ios/AhoySDK.bundle"/>
-	
-	<framework src="QuartzCore.framework" />
-	<framework src="OpenGLES.framework" />
-	<framework src="AudioToolbox.framework" />
-	<framework src="AVFoundation.framework" />
-	<framework src="CoreVideo.framework" />
-	<framework src="Foundation.framework" />
-	<framework src="GLKit.framework" />
-	<framework src="UIKit.framework" />
-	<framework src="CoreGraphics.framework" />
-	<framework src="Security.framework" />
-	<framework src="AssetsLibrary.framework" />
-	<framework src="MobileCoreServices.framework" />
-	<framework src="CoreLocation.framework" />
-	<framework src="PushKit.framework" />
-	<framework src="libsqlite3.dylib" />
-	<framework src="libstdc++.dylib" />
-	<framework src="libc++.dylib" />
-	<framework src="libSystem.dylib" />
-	<framework src="libutil.dylib" />
-	<framework src="libicucore.dylib" />
-	<framework src="VideoToolbox.framework" />
+	<framework src="src/ios/AhoyKit.framework" custom="true" />
     </platform>
 </plugin>

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AhoySDK.h"
+#import <AhoyKit/AhoyKit.h>
 #import "AppDelegate+ahoyrtc.h"
 
 @implementation AppDelegate (ahoyrtc)

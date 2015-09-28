@@ -8,7 +8,10 @@ Add the plugin to your existing cordova app with:
 
     $ cordova plugin add https://github.com/ahoyconference/cordova-ahoyrtc.git
 
-Enable the "audio" and "voip" background mode capabilities for your app.
+The inner workings of the AhoyRTC plugin changed recently (from a statically linked library and a resource bundle) to an iOS framework (AhoyKit). Make sure that your XCode project embedds the AhoyKit framework ("General" ... "Embedded Binaries" ).
+
+Because some dependencies (included with the AhoyRTC plugin) do not support bitcode (yet), you will need to disable bitcode support for your XCode project when you are using XCode 7+("Build Settings" ... "Build Options" ... "Enable Bitcode").
+
 
 ## Examples
 

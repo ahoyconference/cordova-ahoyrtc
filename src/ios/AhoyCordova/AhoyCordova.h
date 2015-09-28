@@ -5,7 +5,7 @@
 //  Created by kapejod on 05.02.15.
 //
 //
-#import "AhoySDK.h"
+#import <AhoyKit/AhoyKit.h>
 #import <Cordova/CDV.h>
 
 @interface AhoyCordova : CDVPlugin
