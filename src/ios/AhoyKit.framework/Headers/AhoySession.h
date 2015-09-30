@@ -42,6 +42,7 @@
 @property (nonatomic, strong) RTCSessionDescription *remoteDescription;
 @property (nonatomic, strong) NSDictionary *turn;
 @property (nonatomic, strong) NSMutableArray *pendingIceCandidates;
+@property (nonatomic) BOOL isMediaLayerConnected;
 @property (nonatomic) BOOL isConnected;
 @property (nonatomic) int receivedAcks;
 
@@ -62,6 +63,7 @@
 - (void)didReceiveIceCandidate:(RTCICECandidate *)candidate;
 - (void)didGetAnswered:(NSDictionary *)sessionAnswer fromAddress:(NSString *)address;
 - (void)didGetCanceled;
+- (void)didGetAcknowledged;
 - (void)didGetTerminated;
 - (void)didGetRejectedWithStatus:(int)status andReason:(NSString *)reason;
 - (void)didGetConfirmedForAddress:(NSString *)address;

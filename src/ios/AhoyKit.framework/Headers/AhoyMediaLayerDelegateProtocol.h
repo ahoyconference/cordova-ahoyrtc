@@ -9,5 +9,5 @@
 @protocol AhoyMediaLayerDelegateProtocol <NSObject>
 - (void)sessionDidEstablishMediaLayer:(id)call;
 - (void)sessionDidDisconnectMediaLayer:(id)call;
-
+- (void)sessionDidFailToEstablishMediaLayer:(id)call;
 @end

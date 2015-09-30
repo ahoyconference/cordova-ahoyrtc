@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/AhoyMediaLayerDelegateProtocol.h</key>
 		<data>
-		oqd4buvQevif1+dM8g/xe/yYr1Q=
+		AKKMQY1o/258yHB6kO0qoCEP744=
 		</data>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		MiTFARtsCY+Z9Vh5bv6epIh9w+c=
+		QRm1nR7qx1q0LOMg2t3gJLFiKiQ=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
-		L2B+96SWxXeQ5iXezakcUPxlZhI=
+		cIj5SzU1hQIFk3kcc0yi1myga0A=
 		</data>
 		<key>Headers/AhoySipCall.h</key>
 		<data>
@@ -170,7 +170,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		rVfNDVfo1G8i7xnym1L/UU9j5d0=
+		ZMfzb6kS+Ase2M2u/Cr3AoRisrM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -252,7 +252,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			epfJNAD88ogr36/TEF6Ajxil+vY=
+			CtBRfFx8MboriAnV9YahY6ntpQ8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -265,7 +265,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LIST4eZXT8zbInayQUkigQGEroA=
+			Unf+yTuww+EguVrjH4VUTbMOyO4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -307,7 +307,7 @@
 		</data>
 		<key>Headers/AhoyMediaLayerDelegateProtocol.h</key>
 		<data>
-		oqd4buvQevif1+dM8g/xe/yYr1Q=
+		AKKMQY1o/258yHB6kO0qoCEP744=
 		</data>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<data>
@@ -319,11 +319,11 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		MiTFARtsCY+Z9Vh5bv6epIh9w+c=
+		QRm1nR7qx1q0LOMg2t3gJLFiKiQ=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
-		L2B+96SWxXeQ5iXezakcUPxlZhI=
+		cIj5SzU1hQIFk3kcc0yi1myga0A=
 		</data>
 		<key>Headers/AhoySipCall.h</key>
 		<data>
@@ -525,7 +525,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			epfJNAD88ogr36/TEF6Ajxil+vY=
+			CtBRfFx8MboriAnV9YahY6ntpQ8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -538,7 +538,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LIST4eZXT8zbInayQUkigQGEroA=
+			Unf+yTuww+EguVrjH4VUTbMOyO4=
 			</data>
 			<key>optional</key>
 			<true/>
