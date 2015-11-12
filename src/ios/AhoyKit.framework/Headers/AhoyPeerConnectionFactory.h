@@ -21,6 +21,7 @@
 #import "RTCVideoCapturer.h"
 #import "RTCAudioTrack.h"
 #import "RTCVideoTrack.h"
+#import "RTCStatsReport.h"
 #import "AhoySDK.h"
 
 
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL isUsingBackCamera;
 
 + (id)sharedInstance;
++ (void) addStatisticsPair:(RTCPair *)pair toDictionary:(NSMutableDictionary *)dictionary;
 + (NSString *)processSdp:(NSString *)origSDP  maxVideoBitrate:(NSNumber *)maxVideoBitrate limitVideoBitrate:(bool)limitVideoBitrate;
 + (NSString *)processSdp:(NSString *)origSDP;
 + (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description preferredVideoCodec:(NSString *)codec;

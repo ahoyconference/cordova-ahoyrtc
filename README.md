@@ -12,6 +12,9 @@ The inner workings of the AhoyRTC plugin changed recently (from a statically lin
 
 Because some dependencies (included with the AhoyRTC plugin) do not support bitcode (yet), you will need to disable bitcode support for your XCode project when you are using XCode 7+ ("Build Settings" ... "Build Options" ... "Enable Bitcode").
 
+If you are using XCode 7.1 you need to add (including the quotes):
+ "$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include"
+to the "Header Search Path" in "Build Settings" or building an AppStore binary will fail.
 
 ## Examples
 

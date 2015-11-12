@@ -12,10 +12,11 @@
 #import "RTCIceCandidate.h"
 #import "RTCSessionDescription.h"
 #import "RTCSessionDescriptionDelegate.h"
+#import "RTCStatsDelegate.h"
 #import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySessionDelegateProtocol.h"
 
-@interface AhoySession : NSObject <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, UIAlertViewDelegate>
+@interface AhoySession : NSObject <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, RTCStatsDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id<AhoySessionDelegateProtocol> delegate;
 @property (nonatomic, weak) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
@@ -32,6 +33,7 @@
 @property (nonatomic, strong) NSDictionary *metaData;
 @property (nonatomic) BOOL isAudioEnabled;
 @property (nonatomic) BOOL isVideoEnabled;
+@property (nonatomic) BOOL isTrickleIceEnabled;
 @property (nonatomic, strong) UILocalNotification *localNotification;
 @property (nonatomic, strong) UIAlertView *alertView;
 
@@ -39,12 +41,23 @@
 @property (nonatomic, strong) RTCMediaStream *localStream;
 @property (nonatomic, strong) RTCMediaStream *remoteStream;
 @property (nonatomic, strong) RTCSessionDescription *localDescription;
+@property (nonatomic, weak) RTCMediaStreamTrack *localAudioTrack;
+@property (nonatomic) int localAudioLostPackets;
+@property (nonatomic, weak) RTCMediaStreamTrack *localVideoTrack;
+@property (nonatomic) int localVideoLostPackets;
+@property (nonatomic) int localVideoMaxBitrate;
+@property (nonatomic) int bweAvailableSendBandwidth;
+@property (nonatomic) int bweAvailableReceiveBandwidth;
+@property (nonatomic) BOOL isBandwidthWarningActive;
+
 @property (nonatomic, strong) RTCSessionDescription *remoteDescription;
 @property (nonatomic, strong) NSDictionary *turn;
+@property (nonatomic, strong) NSMutableArray *localIceCandidates;
 @property (nonatomic, strong) NSMutableArray *pendingIceCandidates;
 @property (nonatomic) BOOL isMediaLayerConnected;
 @property (nonatomic) BOOL isConnected;
 @property (nonatomic) int receivedAcks;
+@property (nonatomic, strong) NSTimer *statisticsTimer;
 
 @property (nonatomic, copy) void (^onSetSessionDescriptionCallback)(NSError *error);
 @property (nonatomic, copy) void (^onCreateSessionDescriptionCallback)(RTCSessionDescription *description, NSError *error);
@@ -71,5 +84,6 @@
 
 - (void)terminate;
 - (void)hangup;
+
 @end
 

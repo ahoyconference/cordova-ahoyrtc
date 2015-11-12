@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<data>
-		skFmhaRzR2KuW/XR/B4OblHuKDc=
+		4jQip0QF0yHgFhh6u5g/dAhOfck=
 		</data>
 		<key>Headers/AhoySDK.h</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		QRm1nR7qx1q0LOMg2t3gJLFiKiQ=
+		57bJP7vxdka2HypgOBz6VjyPQAI=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
@@ -170,7 +170,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZMfzb6kS+Ase2M2u/Cr3AoRisrM=
+		2wHnUOT+SPravYr+XUnoWr2D29Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -265,7 +265,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Unf+yTuww+EguVrjH4VUTbMOyO4=
+			037u4G7nJqsWldwhCUzzam7tYTQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -311,7 +311,7 @@
 		</data>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<data>
-		skFmhaRzR2KuW/XR/B4OblHuKDc=
+		4jQip0QF0yHgFhh6u5g/dAhOfck=
 		</data>
 		<key>Headers/AhoySDK.h</key>
 		<data>
@@ -319,7 +319,7 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		QRm1nR7qx1q0LOMg2t3gJLFiKiQ=
+		57bJP7vxdka2HypgOBz6VjyPQAI=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
@@ -538,7 +538,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Unf+yTuww+EguVrjH4VUTbMOyO4=
+			037u4G7nJqsWldwhCUzzam7tYTQ=
 			</data>
 			<key>optional</key>
 			<true/>
