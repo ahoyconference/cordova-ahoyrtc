@@ -43,7 +43,7 @@
 - (void)unmuteAudioStream:(RTCMediaStream *)mediaStream;
 - (void)muteVideoStream:(RTCMediaStream *)mediaStream;
 - (void)unmuteVideoStream:(RTCMediaStream *)mediaStream;
-- (BOOL)switchCamera;
+- (BOOL) switchCamera;
 - (void) setTorchEnabled:(BOOL) enabled;
 - (BOOL) getTorchEnabled;
 @end

@@ -1,0 +1,46 @@
+//
+//  AhoyUC.pch
+//  AhoyUC
+//
+//  Created by kapejod on 06/01/15.
+//  Copyright (c) 2015 Junghanns Communications GmbH. All rights reserved.
+//
+
+#ifndef AhoyKit_AhoyKit_pch
+#define AhoyKit_AhoyKit_pch
+
+
+#ifdef DEBUG
+
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#else
+
+#define DLog(...)
+#define DLog2(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#endif
+
+#define AhoySDKBundle() [NSBundle bundleForClass:AhoySDK.class]
+#define AhoySDKLocalizedStringOld(key, comment) \
+[[NSBundle bundleForClass:AhoySDK.class] localizedStringForKey:(key) value:@"" table:nil]
+
+#define AhoySDKLocalizedString(key, comment) \
+[[NSBundle bundleWithPath:[[NSBundle bundleForClass:AhoySDK.class] pathForResource:[[[[NSLocale preferredLanguages] objectAtIndex:0] componentsSeparatedByString:@"-"] objectAtIndex:0] ofType:@"lproj"]] localizedStringForKey:(key) value:@"" table:nil]
+
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
+
+#define RUN_ON_UI_THREAD(block) \
+if ([NSThread isMainThread]) \
+block(); \
+else \
+dispatch_sync(dispatch_get_main_queue(), block);
+
+
+#endif
+
+
