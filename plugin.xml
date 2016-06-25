@@ -3,7 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:rim="http://www.blackberry.com/ns/widgets"
 	id="com.ahoyrtc.cordova"
-	version="0.1.6">
+	version="0.1.7">
     <name>AhoyRTC SDK cordova plugin</name>
     <description>Cordova plugin for the AhoyRTC SDK</description>
     <author>Klaus-Peter Junghanns</author>
@@ -13,7 +13,7 @@
     </js-module>
 
     <engines>
-	<engine name="cordova" version=">=3.1.0" />
+	<engine name="cordova" version=">=4.0.0" />
     </engines>
 
     <platform name="ios">
