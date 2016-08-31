@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AhoyApiManager.h</key>
 		<data>
-		zKWOgEBy4R0CzB+ES67VKbyqcfc=
+		p4NrFtMmzrg434k8tGyvrwkP+74=
 		</data>
 		<key>Headers/AhoyCallViewController.h</key>
 		<data>
@@ -250,7 +250,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XOFke7CgvgG+4C0meXES+D9xWK0=
+		GMuCYfloT0TBAFlwpi1jGESo6cE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -365,11 +365,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zKWOgEBy4R0CzB+ES67VKbyqcfc=
+			p4NrFtMmzrg434k8tGyvrwkP+74=
 			</data>
 			<key>hash2</key>
 			<data>
-			TRI6x0bd8XjCJ0v88tb+zzzVeLzNCFafQ2k6A3idqbk=
+			erwWKuEc1XNUlJ3DjvKGFjOIZ2+4hxsbapzXsvRM9+0=
 			</data>
 		</dict>
 		<key>Headers/AhoyCallViewController.h</key>

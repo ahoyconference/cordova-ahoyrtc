@@ -10,7 +10,7 @@
 
 @implementation AhoyCordova
 
-- (void) pluginInitialize{
+- (void) pluginInitialize {
     NSLog(@"AhoyCordova.pluginInitialize");
     self.sdk = [AhoySDK sharedInstance];
 }

@@ -35,6 +35,7 @@
 @property (nonatomic, strong) SRWebSocket *apiSocket;
 @property (nonatomic, strong) NSTimer *reconnectTimer;
 @property (nonatomic, strong) NSTimer *endBackgroundTimer;
+@property (nonatomic) __block BOOL isInitialized;
 @property (nonatomic) __block BOOL isConnected;
 @property (nonatomic) __block BOOL isConnecting;
 @property (nonatomic) __block BOOL isLoggedIn;
