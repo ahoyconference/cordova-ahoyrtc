@@ -154,5 +154,8 @@ module.exports = {
 	},
 	getPresenceStatus: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "getPresenceStatus", []);
+	},
+	shutdown: function(successCallback, errorCallback) {
+    	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "shutdown", []);
 	}
 }

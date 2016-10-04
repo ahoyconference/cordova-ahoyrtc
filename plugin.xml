@@ -32,6 +32,14 @@
 	    </array>
 	</config-file>
 
+	<config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+	    <string>Camera is needed for video calling.</string>
+	</config-file>
+
+	<config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+	    <string>Microphone is needed for video calling.</string>
+	</config-file>
+
 	<header-file src="src/ios/AhoyCordova/AhoyCordova.h" />
 	<source-file src="src/ios/AhoyCordova/AhoyCordova.m" />
 
@@ -40,4 +48,32 @@
 
 	<framework src="src/ios/AhoyKit.framework" custom="true" />
     </platform>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+	    <feature name="AhoyRTC">
+		<param name="android-package" value="com.ahoyrtc.cordova.AhoyCordovaPlugin" />
+	        <param name="onload" value="true" />
+	    </feature>
+	</config-file>
+	
+	<source-file src="src/android/src/com/ahoyrtc/cordova/AhoyCordovaPlugin.java" target-dir="src/com/ahoyrtc/cordova"  />
+	<framework src="src/android/ahoysdk.gradle" custom="true" type="gradleReference" />
+	<resource-file src="src/android/libs/ahoysdk.aar" target="libs/ahoysdk.aar" />
+
+	<config-file target="AndroidManifest.xml" parent="/manifest">
+	    <uses-permission android:name="android.permission.CAMERA" />
+	    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+	    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	    <uses-permission android:name="android.permission.INTERNET" />
+	    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	    <uses-permission android:name="android.permission.WAKE_LOCK" />
+	</config-file>
+	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+	    <activity android:name="com.ahoyrtc.sdk.AhoyVideoCallActivity" android:configChanges="orientation|screenSize"></activity>
+	</config-file>
+    </platform>
+
 </plugin>
