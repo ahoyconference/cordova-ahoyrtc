@@ -8,11 +8,11 @@ Add the plugin to your existing cordova app with:
 
     $ cordova plugin add https://github.com/ahoyconference/cordova-ahoyrtc.git
 
-The inner workings of the AhoyRTC plugin changed recently (from a statically linked library and a resource bundle) to an iOS framework (AhoyKit). Make sure that your XCode project embedds the AhoyKit framework ("General" ... "Embedded Binaries" ).
+The inner workings of the AhoyRTC plugin changed recently (from a statically linked library and a resource bundle) to two iOS frameworks (AhoyKit and WebRTC). Make sure that your XCode project embedds the AhoyKit and WebRTC frameworks ("General" ... "Embedded Binaries" ).
 
-Because some dependencies (included with the AhoyRTC plugin) do not support bitcode (yet), you will need to disable bitcode support for your XCode project when you are using XCode 7+ ("Build Settings" ... "Build Options" ... "Enable Bitcode").
+Because some dependencies (included with the AhoyRTC plugin) do not support bitcode (yet), you will need to disable bitcode support for your XCode project ("Build Settings" ... "Build Options" ... "Enable Bitcode"). Recent Cordova versions might do this automatically
 
-If you are using XCode 7.1 you need to add (including the quotes):
+If you are using an older Cordova version and XCode 7.1 you need to add (including the quotes):
  "$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include"
 to the "Header Search Path" in "Build Settings" or building an AppStore binary will fail.
 
