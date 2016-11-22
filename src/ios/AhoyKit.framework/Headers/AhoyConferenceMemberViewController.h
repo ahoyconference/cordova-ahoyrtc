@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebRTC/WebRTC.h>
 #import "AhoyEAGLVideoView.h"
-#import "RTCVideoTrack.h"
-#import "RTCMediaStream.h"
 #import "AhoyConferenceMember.h"
 #import "AhoyConferenceDelegateProtocol.h"
 #import "AhoyConferenceMemberDelegateProtocol.h"

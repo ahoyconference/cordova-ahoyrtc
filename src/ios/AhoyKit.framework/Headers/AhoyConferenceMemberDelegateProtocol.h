@@ -14,7 +14,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RTCMediaStream.h"
+#import <WebRTC/WebRTC.h>
 
 @protocol AhoyConferenceMemberDelegateProtocol <NSObject>
 - (void)didGetMediaStream:(RTCMediaStream *)stream;

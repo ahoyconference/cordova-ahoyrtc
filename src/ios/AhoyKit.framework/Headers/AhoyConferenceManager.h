@@ -8,7 +8,7 @@
 
 #import <foundation/Foundation.h>
 #import "SocketRocket/SRWebSocket.h"
-#import "RTCPeerConnection.h"
+#import <WebRTC/WebRTC.h>
 #import "AhoyConferenceMember.h"
 #import "AhoyConference.h"
 

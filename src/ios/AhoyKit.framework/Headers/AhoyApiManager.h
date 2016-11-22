@@ -12,11 +12,8 @@
 #import <foundation/Foundation.h>
 #import <UIKit/UIApplication.h>
 #import <PushKit/PushKit.h>
+#import <WebRTC/WebRTC.h>
 #import "SocketRocket/SRWebSocket.h"
-#import "RTCPeerConnection.h"
-#import "RTCPair.h"
-#import "RTCMediaConstraints.h"
-#import "RTCIceCandidate.h"
 #import "AhoyPeerConnectionFactory.h"
 #import "AhoySessionDelegateProtocol.h"
 #import "AhoyMediaLayerDelegateProtocol.h"

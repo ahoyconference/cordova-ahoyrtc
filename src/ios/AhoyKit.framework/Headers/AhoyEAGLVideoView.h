@@ -8,12 +8,9 @@
 
 #ifndef AhoyEAGLVideoView_h
 #define AhoyEAGLVideoView_h
-#import "RTCEAGLVideoView.h"
-#import <AhoyKit/AhoyKit.h>
 
-@interface AhoyEAGLVideoView : RTCEAGLVideoView {
-    
-}
+#define AhoyEAGLVideoView RTCEAGLVideoView
+#define AhoyEAGLVideoViewDelegate RTCEAGLVideoViewDelegate
 
-@end
+
 #endif /* AhoyEAGLVideoView_h */

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WebRTC/WebRTC.h>
 #import "AhoyConference.h"
 #import "AhoyConferenceMember.h"
-#import "RTCMediaStream.h"
 
 @protocol AhoyConferenceDelegateProtocol <NSObject>
 - (void)member:(AhoyConferenceMember *)member didJoinConference:(id)conference;

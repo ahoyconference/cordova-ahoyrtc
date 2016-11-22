@@ -13,6 +13,12 @@
 - (void) pluginInitialize {
     NSLog(@"AhoyCordova.pluginInitialize");
     self.sdk = [AhoySDK sharedInstance];
+    [self.sdk setViewController:self.viewController];
+#ifdef DEBUG
+    [self.sdk initializeWithCallback:nil debugBuild:YES];
+#else
+    [self.sdk initializeWithCallback:nil debugBuild:NO];
+#endif
 }
 
 - (void) init:(CDVInvokedUrlCommand *)command {
@@ -80,7 +86,6 @@
 
     [self.commandDelegate runInBackground:^{
 	[self.sdk setApiKey:self.apiKey apiUrl:self.apiUrl];
-
     }];
 
     pluginResult = [ CDVPluginResult

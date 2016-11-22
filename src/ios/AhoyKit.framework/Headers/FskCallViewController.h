@@ -15,22 +15,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "RTCICECandidate.h"
-#import "RTCICEServer.h"
-#import "RTCMediaConstraints.h"
-#import "RTCMediaStream.h"
-#import "RTCPair.h"
-#import "RTCPeerConnection.h"
-#import "RTCPeerConnectionDelegate.h"
-#import "RTCPeerConnectionFactory.h"
-#import "RTCSessionDescription.h"
-#import "RTCSessionDescriptionDelegate.h"
-#import "RTCVideoSource.h"
-#import "RTCAVFoundationVideoSource.h"
-#import "RTCAudioTrack.h"
-#import "RTCVideoCapturer.h"
-#import "RTCVideoTrack.h"
 #import "AhoyEAGLVideoView.h"
 #import "AhoySDK.h"
 #import "AhoySession.h"

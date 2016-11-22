@@ -7,21 +7,7 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
-#import "RTCICECandidate.h"
-#import "RTCICEServer.h"
-#import "RTCMediaConstraints.h"
-#import "RTCMediaStream.h"
-#import "RTCPair.h"
-#import "RTCPeerConnection.h"
-#import "RTCPeerConnectionDelegate.h"
-#import "RTCPeerConnectionFactory.h"
-#import "RTCSessionDescription.h"
-#import "RTCVideoSource.h"
-#import "RTCAVFoundationVideoSource.h"
-#import "RTCVideoCapturer.h"
-#import "RTCAudioTrack.h"
-#import "RTCVideoTrack.h"
-#import "RTCStatsReport.h"
+#import <WebRTC/WebRTC.h>
 #import "AhoySDK.h"
 
 
@@ -32,7 +18,7 @@
 @property (nonatomic) BOOL isUsingBackCamera;
 
 + (id)sharedInstance;
-+ (void) addStatisticsPair:(RTCPair *)pair toDictionary:(NSMutableDictionary *)dictionary;
++ (void) addStatisticsPair:(NSDictionary *)pair toDictionary:(NSMutableDictionary *)dictionary;
 + (NSString *)processSdp:(NSString *)origSDP  maxVideoBitrate:(NSNumber *)maxVideoBitrate limitVideoBitrate:(bool)limitVideoBitrate;
 + (NSString *)processSdp:(NSString *)origSDP;
 + (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description preferredVideoCodec:(NSString *)codec;

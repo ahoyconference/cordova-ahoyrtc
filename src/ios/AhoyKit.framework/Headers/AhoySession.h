@@ -7,16 +7,11 @@
 //
 
 #import <foundation/Foundation.h>
-#import "RTCPeerConnection.h"
-#import "RTCMediaStream.h"
-#import "RTCIceCandidate.h"
-#import "RTCSessionDescription.h"
-#import "RTCSessionDescriptionDelegate.h"
-#import "RTCStatsDelegate.h"
+#import <WebRTC/WebRTC.h>
 #import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySessionDelegateProtocol.h"
 
-@interface AhoySession : NSObject <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, RTCStatsDelegate, UIAlertViewDelegate>
+@interface AhoySession : NSObject <RTCPeerConnectionDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, weak) id<AhoySessionDelegateProtocol> delegate;
 @property (nonatomic, weak) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
@@ -58,9 +53,8 @@
 @property (nonatomic) BOOL isConnected;
 @property (nonatomic) int receivedAcks;
 @property (nonatomic, strong) NSTimer *statisticsTimer;
+@property (nonatomic, strong) NSTimer *rejectionTimer;
 
-@property (nonatomic, copy) void (^onSetSessionDescriptionCallback)(NSError *error);
-@property (nonatomic, copy) void (^onCreateSessionDescriptionCallback)(RTCSessionDescription *description, NSError *error);
 @property (nonatomic, copy) void (^onIceCandidatesCompleteCallback)(void);
 @property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void);
 @property (nonatomic, copy) void (^onStreamAddedCallback)(RTCPeerConnection *peerConnection, RTCMediaStream *stream);
@@ -68,12 +62,15 @@
 - (id)initWithSdpOffer:(NSDictionary *)sessionOffer fromAddress:(NSString *)address localAddress:(NSString *)localAddress;
 - (id)initOutgoingSessionWithDestinationAddress:(NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(NSString *)localAddress from:(NSDictionary *)from;
 
+- (void)onSetRemoteDescription:(NSError * _Nullable)error;
+- (void)onSetLocalDescription:(NSError * _Nullable)error;
+
 - (void)answerWithAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)answerIncomingSessionWithAudio:(BOOL) enableAudio andVideo:(BOOL) enableVideo;
 - (void)startOutgoingSession;
 - (void)rejectWithStatus:(int)status andReason:(NSString *)reason;
 
-- (void)didReceiveIceCandidate:(RTCICECandidate *)candidate;
+- (void)didReceiveIceCandidate:(RTCIceCandidate *)candidate;
 - (void)didGetAnswered:(NSDictionary *)sessionAnswer fromAddress:(NSString *)address;
 - (void)didGetCanceled;
 - (void)didGetAcknowledged;

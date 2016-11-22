@@ -7,14 +7,10 @@
 //
 
 #import <foundation/Foundation.h>
-#import "RTCPeerConnection.h"
-#import "RTCMediaStream.h"
-#import "RTCSessionDescription.h"
-#import "RTCSessionDescriptionDelegate.h"
-#import "RTCStatsDelegate.h"
+#import <WebRTC/WebRTC.h>
 #import "AhoyConferenceMemberDelegateProtocol.h"
 
-@interface AhoyConferenceMember : NSObject <RTCPeerConnectionDelegate, RTCSessionDescriptionDelegate, RTCStatsDelegate>
+@interface AhoyConferenceMember : NSObject <RTCPeerConnectionDelegate>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *email;
@@ -36,21 +32,19 @@
 @property (nonatomic) BOOL isMediaLayerConnected;
 
 
+/*
 @property (nonatomic, copy) void (^onSetSessionDescriptionCallback)(NSError *error);
 @property (nonatomic, copy) void (^onCreateSessionDescriptionCallback)(RTCSessionDescription *description, NSError *error);
 @property (nonatomic, copy) void (^onIceCandidatesCompleteCallback)(void);
-@property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void);
-@property (nonatomic, copy) void (^onStreamAddedCallback)(RTCPeerConnection *peerConnection, RTCMediaStream *stream);
+@property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void); */
 @property (nonatomic, weak) id<AhoyConferenceMemberDelegateProtocol> delegate;
 
 @property (nonatomic, strong) RTCPeerConnection *peerConnection;
 @property (nonatomic, strong)RTCMediaStream *mediaStream;
 
-- (void)peerConnection:(RTCPeerConnection *)peerConnection addedStream:(RTCMediaStream *)stream;
-- (void)peerConnection:(RTCPeerConnection *)peerConnection iceConnectionChanged:(RTCICEConnectionState)newState;
-- (id)initWithMemberName:(NSString *)memberName andMemberID:(NSString *)memberID;
-- (id)initFromDictionary:(NSDictionary *)dict;
-- (void)handleSdpRequest:(NSDictionary *)message;
+- (id)initWithMemberName:(NSString * _Nonnull)memberName andMemberID:(NSString * _Nonnull)memberID;
+- (id)initFromDictionary:(NSDictionary * _Nonnull)dict;
+- (void)handleSdpRequest:(NSDictionary * _Nonnull)message;
 - (void)destroyPeerConnection;
 - (void)destroy;
 
