@@ -46,8 +46,8 @@
 	<header-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.h" />
 	<source-file src="src/ios/AhoyCordova/AppDelegate+ahoyrtc.m" />
 
-	<framework src="src/ios/WebRTC.framework" custom="true" />
-	<framework src="src/ios/AhoyKit.framework" custom="true" />
+	<framework src="src/ios/WebRTC.framework" custom="true" embed="true"/>
+	<framework src="src/ios/AhoyKit.framework" custom="true" embed="true"/>
     </platform>
 
     <platform name="android">
