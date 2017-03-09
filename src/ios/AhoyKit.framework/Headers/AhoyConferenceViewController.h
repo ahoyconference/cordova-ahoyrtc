@@ -13,7 +13,7 @@
 #import "AhoyImageButton.h"
 #import "AhoyImageSwitch.h"
 
-@interface AhoyConferenceViewController : UIViewController <AhoyConferenceDelegateProtocol, AhoyConferenceMemberTouchDelegateProtocol, AhoyImageButtonDelegateProtocol, AhoyImageSwitchDelegateProtocol, UIAlertViewDelegate>
+@interface AhoyConferenceViewController : UIViewController <AhoyConferenceDelegateProtocol, AhoyConferenceMemberTouchDelegateProtocol, AhoyImageButtonDelegateProtocol, AhoyImageSwitchDelegateProtocol>
 - (id)initWithConference:(AhoyConference *)conference callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)didLeaveConference;
 @end

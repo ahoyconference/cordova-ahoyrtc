@@ -11,7 +11,7 @@
 #import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySessionDelegateProtocol.h"
 
-@interface AhoySession : NSObject <RTCPeerConnectionDelegate, UIAlertViewDelegate>
+@interface AhoySession : NSObject <RTCPeerConnectionDelegate>
 
 @property (nonatomic, weak) id<AhoySessionDelegateProtocol> delegate;
 @property (nonatomic, weak) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
@@ -30,7 +30,7 @@
 @property (nonatomic) BOOL isVideoEnabled;
 @property (nonatomic) BOOL isTrickleIceEnabled;
 @property (nonatomic, strong) UILocalNotification *localNotification;
-@property (nonatomic, strong) UIAlertView *alertView;
+@property (nonatomic, strong) UIAlertController *alertController;
 
 @property (nonatomic, strong) RTCPeerConnection *peerConnection;
 @property (nonatomic, strong) RTCMediaStream *localStream;
