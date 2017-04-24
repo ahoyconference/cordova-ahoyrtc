@@ -29,7 +29,6 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 @property (nonatomic, strong) __block void (^callListener)(AhoyCallEvent, NSDictionary *);
 
 + (id)sharedInstance;
-+ (void)destroy;
 + (NSString *)platform;
 + (BOOL)isDeviceVideoCapable;
 + (BOOL)isDeviceHdVideoCapable;
@@ -63,8 +62,9 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName callback:(void(^)(BOOL, NSDictionary *))callback;
-- (void)callContact:(NSDictionary *)contact withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo callback:(void(^)(BOOL, NSDictionary *))callback;
-- (void)callContactByUuid:(NSString *)uuid withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo presentingViewController:(UIViewController *)viewController callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName connectionTimeout:(int) connectionTimeout callTimeout:(int) callTimeout callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)callContact:(NSDictionary *)contact withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo connectionTimeout:(int)connectionTimeout callTimeout:(int) callTimeout callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)callContactByUuid:(NSString *)uuid withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo presentingViewController:(UIViewController *)viewController connectionTimeout:(int)connectionTimeout callTimeout:(int)callTimeout callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)getContactInfo:(NSString *)contactUuid withCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getConferenceListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getConferenceInfo:(NSString *)uuid callback:(void (^)(BOOL, NSDictionary *))callback;
@@ -76,5 +76,7 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 - (void)joinConferenceRoom:(NSString *)roomName name:(NSString *)name password:(NSString *)password at:(NSString *)wsUrl presentingViewController:(UIViewController *)viewController callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)createConferenceRoom:(NSString *)roomName password:(NSString *)password moderatorPassword:(NSString *)moderatorPassword at:(NSString *)wsUrl callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)joinConferenceWithInvitation:(NSDictionary *)invitation at:(NSString *)wsUrl presentingViewController:(UIViewController *)viewController callback:(void (^)(BOOL, NSDictionary *))callback;
+
+- (void)shutdown;
 
 @end

@@ -32,6 +32,7 @@
 @property (nonatomic, strong) SRWebSocket *apiSocket;
 @property (nonatomic, strong) NSTimer *reconnectTimer;
 @property (nonatomic, strong) NSTimer *endBackgroundTimer;
+@property (nonatomic, strong) NSTimer *connectionTimeoutTimer;
 @property (nonatomic) __block BOOL isInitialized;
 @property (nonatomic) __block BOOL isConnected;
 @property (nonatomic) __block BOOL isConnecting;
@@ -45,19 +46,20 @@
 @property (nonatomic) NetworkStatus networkStatus;
 
 + (id)sharedInstance;
+- (void)shutdown;
 - (void)setApiKey:(NSString *)apiKey apiUrl:(NSString *)apiUrl;
 - (void)updatePushToken:(NSString *)token callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)initializeWithCallback:(void (^)(BOOL, NSDictionary *))callback debugBuild:(BOOL)isDebugBuild;
 
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password callback:(void (^)(BOOL, NSDictionary *))callback;
-- (void)getTemporaryIdentityWithCallback:(void (^)(BOOL, NSDictionary *))callback;
+- (void)getTemporaryIdentityWithTimeout:(int)timeout callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (NSString *)updateCallStatus:(NSString *)status;
 - (void)sendUserStatusEventWithCallStatus:(NSString *)callStatus callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactInfo:(NSString *)contactUuid withCallback:(void (^)(BOOL, NSDictionary *))callback;
-- (AhoySession *)callContact:(NSDictionary *)contact withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo withCallback:(void (^)(BOOL, NSDictionary *))callback;
-- (AhoySession *)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData withCallback:(void (^)(BOOL, NSDictionary *))callback;
+- (AhoySession *)callContact:(NSDictionary *)contact withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo connectionTimeout:(int)connectionTimeout callTimeout:(int)callTimeout withCallback:(void (^)(BOOL, NSDictionary *))callback;
+- (AhoySession *)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData connectionTimeout:(int)connectionTimeout callTimeout:(int)callTimeout withCallback:(void (^)(BOOL, NSDictionary *))callback;
 
 - (void)answerIncomingCall:(NSString *)uuid withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo  callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)rejectIncomingCall:(NSString *)uuid withReason:(NSString *)reason;

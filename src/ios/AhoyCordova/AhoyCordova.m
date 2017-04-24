@@ -300,7 +300,7 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
         };
-        [self.sdk callContactByUuid:uuid withAudio:audio.boolValue andVideo:video.boolValue presentingViewController:self.viewController callback:_callback];
+        [self.sdk callContactByUuid:uuid withAudio:audio.boolValue andVideo:video.boolValue presentingViewController:self.viewController connectionTimeout:30 callTimeout:0 callback:_callback];
     }
 }
 
@@ -358,7 +358,7 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
         };
-        [self.sdk callAddress:address withAudio:audio.boolValue andVideo:video.boolValue metaData:metaData presentingViewController:self.viewController viewControllerName:viewControllerName callback:_callback];
+        [self.sdk callAddress:address withAudio:audio.boolValue andVideo:video.boolValue metaData:metaData presentingViewController:self.viewController viewControllerName:viewControllerName connectionTimeout:30 callTimeout:0 callback:_callback];
     }
 }
 

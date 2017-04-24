@@ -54,13 +54,16 @@
 @property (nonatomic) int receivedAcks;
 @property (nonatomic, strong) NSTimer *statisticsTimer;
 @property (nonatomic, strong) NSTimer *rejectionTimer;
+@property int timeout;
+@property (nonatomic, strong) NSTimer *timeoutTimer;
+
 
 @property (nonatomic, copy) void (^onIceCandidatesCompleteCallback)(void);
 @property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void);
 @property (nonatomic, copy) void (^onStreamAddedCallback)(RTCPeerConnection *peerConnection, RTCMediaStream *stream);
 
 - (id)initWithSdpOffer:(NSDictionary *)sessionOffer fromAddress:(NSString *)address localAddress:(NSString *)localAddress;
-- (id)initOutgoingSessionWithDestinationAddress:(NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(NSString *)localAddress from:(NSDictionary *)from;
+- (id)initOutgoingSessionWithDestinationAddress:(NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(NSString *)localAddress from:(NSDictionary *)from timeout:(int)timeout;
 
 - (void)onSetRemoteDescription:(NSError * _Nullable)error;
 - (void)onSetLocalDescription:(NSError * _Nullable)error;
