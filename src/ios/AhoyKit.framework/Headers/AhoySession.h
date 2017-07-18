@@ -76,6 +76,7 @@
 - (void)didReceiveIceCandidate:(RTCIceCandidate *)candidate;
 - (void)didGetAnswered:(NSDictionary *)sessionAnswer fromAddress:(NSString *)address;
 - (void)didGetCanceled;
+- (void)isProgressing:(NSDictionary *)information;
 - (void)didGetAcknowledged;
 - (void)didGetTerminated;
 - (void)didGetRejectedWithStatus:(int)status andReason:(NSString *)reason;

@@ -8,6 +8,7 @@
 
 
 @protocol AhoySessionDelegateProtocol <NSObject>
+- (void)sessionIsProgressing:(id)call progress:(NSDictionary *)information;
 - (void)sessionDidGetAcknowledged:(id)call;
 - (void)sessionDidDisconnectMediaLayer:(id)call;
 - (void)sessionIsConnecting:(id)call;
