@@ -12,9 +12,9 @@
 
 @interface AhoyConferenceMember : NSObject <RTCPeerConnectionDelegate>
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *memberID;
+@property (nonatomic, strong, nullable) NSString *name;
+@property (nonatomic, strong, nullable) NSString *email;
+@property (nonatomic, strong, nullable) NSString *memberID;
 @property (nonatomic) BOOL isLocalMember;
 @property (nonatomic) BOOL isModerator;
 @property (nonatomic) BOOL isSpeaker;
@@ -23,12 +23,12 @@
 @property (nonatomic) BOOL isVideoAvailable;
 @property (nonatomic) BOOL isVideoMuted;
 @property (nonatomic) BOOL isSpeaking;
-@property (nonatomic, strong) RTCSessionDescription *localDescription;
-@property (nonatomic, strong) RTCSessionDescription *remoteDescription;
-@property (nonatomic, weak) RTCMediaStreamTrack *audioTrack;
-@property (nonatomic, weak) RTCMediaStreamTrack *videoTrack;
+@property (nonatomic, strong, nullable) RTCSessionDescription *localDescription;
+@property (nonatomic, strong, nullable) RTCSessionDescription *remoteDescription;
+@property (nonatomic, weak, nullable) RTCMediaStreamTrack *audioTrack;
+@property (nonatomic, weak, nullable) RTCMediaStreamTrack *videoTrack;
 @property (nonatomic) double statisticsInterval;
-@property (nonatomic, strong) NSTimer *statisticsTimer;
+@property (nonatomic, strong, nullable) NSTimer *statisticsTimer;
 @property (nonatomic) BOOL isMediaLayerConnected;
 
 
@@ -37,14 +37,14 @@
 @property (nonatomic, copy) void (^onCreateSessionDescriptionCallback)(RTCSessionDescription *description, NSError *error);
 @property (nonatomic, copy) void (^onIceCandidatesCompleteCallback)(void);
 @property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void); */
-@property (nonatomic, weak) id<AhoyConferenceMemberDelegateProtocol> delegate;
+@property (nonatomic, weak, nullable) id<AhoyConferenceMemberDelegateProtocol> delegate;
 
-@property (nonatomic, strong) RTCPeerConnection *peerConnection;
-@property (nonatomic, strong)RTCMediaStream *mediaStream;
+@property (nonatomic, strong, nullable) RTCPeerConnection *peerConnection;
+@property (nonatomic, strong, nullable)RTCMediaStream *mediaStream;
 
-- (id)initWithMemberName:(NSString * _Nonnull)memberName andMemberID:(NSString * _Nonnull)memberID;
-- (id)initFromDictionary:(NSDictionary * _Nonnull)dict;
-- (void)handleSdpRequest:(NSDictionary * _Nonnull)message;
+- (id _Nullable)initWithMemberName:(nonnull NSString *)memberName andMemberID:(NSString * _Nonnull)memberID;
+- (id _Nullable)initFromDictionary:(nonnull NSDictionary *)dict;
+- (void)handleSdpRequest:(nonnull NSDictionary *)message;
 - (void)destroyPeerConnection;
 - (void)destroy;
 

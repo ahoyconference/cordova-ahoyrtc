@@ -13,74 +13,74 @@
 
 @interface AhoySession : NSObject <RTCPeerConnectionDelegate>
 
-@property (nonatomic, weak) id<AhoySessionDelegateProtocol> delegate;
-@property (nonatomic, weak) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
-@property (nonatomic, strong) NSString *uuid;
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, weak, nullable) id<AhoySessionDelegateProtocol> delegate;
+@property (nonatomic, weak, nullable) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
+@property (nonatomic, strong, nullable) NSString *uuid;
+@property (nonatomic, strong, nullable) NSString *email;
+@property (nonatomic, strong, nullable) NSString *url;
 @property (nonatomic) BOOL isOutgoingSession;
-@property (nonatomic, strong) NSString *localAddress;
-@property (nonatomic, strong) NSString *peerAddress;
-@property (nonatomic, strong) NSString *remoteAddress;
-@property (nonatomic, strong) NSDictionary *from;
-@property (nonatomic, strong) NSString *peerFirstName;
-@property (nonatomic, strong) NSString *peerLastName;
-@property (nonatomic, strong) NSDictionary *metaData;
+@property (nonatomic, strong, nullable) NSString *localAddress;
+@property (nonatomic, strong, nullable) NSString *peerAddress;
+@property (nonatomic, strong, nullable) NSString *remoteAddress;
+@property (nonatomic, strong, nullable) NSDictionary *from;
+@property (nonatomic, strong, nullable) NSString *peerFirstName;
+@property (nonatomic, strong, nullable) NSString *peerLastName;
+@property (nonatomic, strong, nullable) NSDictionary *metaData;
 @property (nonatomic) BOOL isAudioEnabled;
 @property (nonatomic) BOOL isVideoEnabled;
 @property (nonatomic) BOOL isTrickleIceEnabled;
-@property (nonatomic, strong) UILocalNotification *localNotification;
-@property (nonatomic, strong) UIAlertController *alertController;
+@property (nonatomic, strong, nullable) UILocalNotification *localNotification;
+@property (nonatomic, strong, nullable) UIAlertController *alertController;
 
-@property (nonatomic, strong) RTCPeerConnection *peerConnection;
-@property (nonatomic, strong) RTCMediaStream *localStream;
-@property (nonatomic, strong) RTCMediaStream *remoteStream;
-@property (nonatomic, strong) RTCSessionDescription *localDescription;
-@property (nonatomic, weak) RTCMediaStreamTrack *localAudioTrack;
+@property (nonatomic, strong, nullable) RTCPeerConnection *peerConnection;
+@property (nonatomic, strong, nullable) RTCMediaStream *localStream;
+@property (nonatomic, strong, nullable) RTCMediaStream *remoteStream;
+@property (nonatomic, strong, nullable) RTCSessionDescription *localDescription;
+@property (nonatomic, weak, nullable) RTCMediaStreamTrack *localAudioTrack;
 @property (nonatomic) int localAudioLostPackets;
-@property (nonatomic, weak) RTCMediaStreamTrack *localVideoTrack;
+@property (nonatomic, weak, nullable) RTCMediaStreamTrack *localVideoTrack;
 @property (nonatomic) int localVideoLostPackets;
 @property (nonatomic) int localVideoMaxBitrate;
 @property (nonatomic) int bweAvailableSendBandwidth;
 @property (nonatomic) int bweAvailableReceiveBandwidth;
 @property (nonatomic) BOOL isBandwidthWarningActive;
 
-@property (nonatomic, strong) RTCSessionDescription *remoteDescription;
-@property (nonatomic, strong) NSDictionary *turn;
-@property (nonatomic, strong) NSMutableArray *localIceCandidates;
-@property (nonatomic, strong) NSMutableArray *pendingIceCandidates;
+@property (nonatomic, strong, nullable) RTCSessionDescription *remoteDescription;
+@property (nonatomic, strong, nullable) NSDictionary *turn;
+@property (nonatomic, strong, nullable) NSMutableArray *localIceCandidates;
+@property (nonatomic, strong, nullable) NSMutableArray *pendingIceCandidates;
 @property (nonatomic) BOOL isMediaLayerConnected;
 @property (nonatomic) BOOL isConnected;
 @property (nonatomic) int receivedAcks;
-@property (nonatomic, strong) NSTimer *statisticsTimer;
-@property (nonatomic, strong) NSTimer *rejectionTimer;
+@property (nonatomic, strong, nullable) NSTimer *statisticsTimer;
+@property (nonatomic, strong, nullable) NSTimer *rejectionTimer;
 @property int timeout;
-@property (nonatomic, strong) NSTimer *timeoutTimer;
+@property (nonatomic, strong, nullable) NSTimer *timeoutTimer;
 
 
-@property (nonatomic, copy) void (^onIceCandidatesCompleteCallback)(void);
-@property (nonatomic, copy) void (^onIceGatheringCompleteCallback)(void);
-@property (nonatomic, copy) void (^onStreamAddedCallback)(RTCPeerConnection *peerConnection, RTCMediaStream *stream);
+@property (nonatomic, copy, nullable) void (^onIceCandidatesCompleteCallback)(void);
+@property (nonatomic, copy, nullable) void (^onIceGatheringCompleteCallback)(void);
+@property (nonatomic, copy, nullable) void (^onStreamAddedCallback)(RTCPeerConnection * _Nonnull peerConnection, RTCMediaStream * _Nonnull stream);
 
-- (id)initWithSdpOffer:(NSDictionary *)sessionOffer fromAddress:(NSString *)address localAddress:(NSString *)localAddress;
-- (id)initOutgoingSessionWithDestinationAddress:(NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(NSString *)localAddress from:(NSDictionary *)from timeout:(int)timeout;
+- (nonnull id)initWithSdpOffer:(nonnull NSDictionary *)sessionOffer fromAddress:(nonnull NSString *)address localAddress:(nonnull NSString *)localAddress;
+- (nonnull id)initOutgoingSessionWithDestinationAddress:(nonnull NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(nonnull NSString *)localAddress from:(nullable NSDictionary *)from timeout:(int)timeout;
 
 - (void)onSetRemoteDescription:(NSError * _Nullable)error;
 - (void)onSetLocalDescription:(NSError * _Nullable)error;
 
-- (void)answerWithAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)answerWithAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo callback:(nullable void(^)(BOOL, NSDictionary * _Nullable))callback;
 - (void)answerIncomingSessionWithAudio:(BOOL) enableAudio andVideo:(BOOL) enableVideo;
 - (void)startOutgoingSession;
-- (void)rejectWithStatus:(int)status andReason:(NSString *)reason;
+- (void)rejectWithStatus:(int)status andReason:(nullable NSString *)reason;
 
-- (void)didReceiveIceCandidate:(RTCIceCandidate *)candidate;
-- (void)didGetAnswered:(NSDictionary *)sessionAnswer fromAddress:(NSString *)address;
+- (void)didReceiveIceCandidate:(nullable RTCIceCandidate *)candidate;
+- (void)didGetAnswered:(nonnull NSDictionary *)sessionAnswer fromAddress:(nonnull NSString *)address;
 - (void)didGetCanceled;
-- (void)isProgressing:(NSDictionary *)information;
+- (void)isProgressing:(nonnull NSDictionary *)information;
 - (void)didGetAcknowledged;
 - (void)didGetTerminated;
-- (void)didGetRejectedWithStatus:(int)status andReason:(NSString *)reason;
-- (void)didGetConfirmedForAddress:(NSString *)address;
+- (void)didGetRejectedWithStatus:(int)status andReason:(nullable NSString *)reason;
+- (void)didGetConfirmedForAddress:(nonnull NSString *)address;
 - (void)showAlertView;
 
 - (void)terminate;
