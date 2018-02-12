@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 AhoyRTC. All rights reserved.
 //
 
-#import <foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import "AhoySipCallDelegateProtocol.h"
 
 @interface AhoySipCall : NSObject

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Junghanns Communications GmbH. All rights reserved.
 //
 
-#import <foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import <WebRTC/WebRTC.h>
 #import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySessionDelegateProtocol.h"
@@ -26,6 +26,7 @@
 @property (nonatomic, strong, nullable) NSString *peerFirstName;
 @property (nonatomic, strong, nullable) NSString *peerLastName;
 @property (nonatomic, strong, nullable) NSDictionary *metaData;
+@property (nonatomic, strong, nullable) NSDictionary *sip;
 @property (nonatomic) BOOL isAudioEnabled;
 @property (nonatomic) BOOL isVideoEnabled;
 @property (nonatomic) BOOL isTrickleIceEnabled;
@@ -56,6 +57,7 @@
 @property (nonatomic, strong, nullable) NSTimer *rejectionTimer;
 @property int timeout;
 @property (nonatomic, strong, nullable) NSTimer *timeoutTimer;
+@property (nonatomic, strong, nullable) NSTimer *iceGatheringTimeoutTimer;
 
 
 @property (nonatomic, copy, nullable) void (^onIceCandidatesCompleteCallback)(void);
@@ -64,6 +66,7 @@
 
 - (nonnull id)initWithSdpOffer:(nonnull NSDictionary *)sessionOffer fromAddress:(nonnull NSString *)address localAddress:(nonnull NSString *)localAddress;
 - (nonnull id)initOutgoingSessionWithDestinationAddress:(nonnull NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(nonnull NSString *)localAddress from:(nullable NSDictionary *)from timeout:(int)timeout;
+- (nonnull id)initOutgoingSessionWithDestinationAddress:(nonnull NSString *)address audio:(BOOL)enableAudio video:(BOOL)enableVideo localAddress:(nonnull NSString *)localAddress from:(nullable NSDictionary *)from sip:(nonnull NSDictionary *)sip timeout:(int)timeout;
 
 - (void)onSetRemoteDescription:(NSError * _Nullable)error;
 - (void)onSetLocalDescription:(NSError * _Nullable)error;
@@ -82,9 +85,11 @@
 - (void)didGetRejectedWithStatus:(int)status andReason:(nullable NSString *)reason;
 - (void)didGetConfirmedForAddress:(nonnull NSString *)address;
 - (void)showAlertView;
-
+- (void)setMicrophoneMuted:(BOOL)muted;
 - (void)terminate;
 - (void)hangup;
+- (void)sendDtmf:(nonnull NSString *)tones withDuration:(NSTimeInterval)duration andInterToneGap:(NSTimeInterval)interToneGap;
+- (void)sendDtmf:(nonnull NSString *)tones;
 
 @end
 
