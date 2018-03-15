@@ -52,6 +52,7 @@
 @property (nonatomic, strong, nullable) NSMutableArray *pendingIceCandidates;
 @property (nonatomic) BOOL isMediaLayerConnected;
 @property (nonatomic) BOOL isConnected;
+@property (nonatomic) BOOL isIceGatheringComplete;
 @property (nonatomic) int receivedAcks;
 @property (nonatomic, strong, nullable) NSTimer *statisticsTimer;
 @property (nonatomic, strong, nullable) NSTimer *rejectionTimer;

@@ -4,57 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/AhoyApiManager.h</key>
-		<data>
-		2OE7HDywk6JnsHbRtT+VdgAkmrk=
-		</data>
-		<key>Headers/AhoyCallViewController.h</key>
-		<data>
-		ZAU9GV6z5czWPeqe/QJsK/V1N7Q=
-		</data>
-		<key>Headers/AhoyConference.h</key>
-		<data>
-		+drREV/LDaYXY1Xnrf9twii/3ig=
-		</data>
-		<key>Headers/AhoyConferenceDelegateProtocol.h</key>
-		<data>
-		YoEu2yGVUx62goD8OvSmyEP2qGA=
-		</data>
-		<key>Headers/AhoyConferenceManager.h</key>
-		<data>
-		0zj9umvAeHZXmvV5U7/Q5q9Ruoo=
-		</data>
-		<key>Headers/AhoyConferenceMember.h</key>
-		<data>
-		FlsrNdI9D4azQC5ZKaQ+ZCC4nfI=
-		</data>
-		<key>Headers/AhoyConferenceMemberDelegateProtocol.h</key>
-		<data>
-		bRxmj3AHEModndJYXRdFqiH9Z9o=
-		</data>
-		<key>Headers/AhoyConferenceMemberListViewController.h</key>
-		<data>
-		Z1IKKLoXmj8X7dbN1GICYllWbus=
-		</data>
-		<key>Headers/AhoyConferenceMemberTouchDelegateProtocol.h</key>
-		<data>
-		WIod+sYarAsgGu89EtHQU1HxhHk=
-		</data>
-		<key>Headers/AhoyConferenceMemberViewController.h</key>
-		<data>
-		UF8CeJQJ/lrQUtu/ykA7cXSEufU=
-		</data>
-		<key>Headers/AhoyConferenceViewController.h</key>
-		<data>
-		NER8czeglqv7OYSatShi9wfqLuc=
-		</data>
 		<key>Headers/AhoyEAGLVideoView.h</key>
 		<data>
 		XOc+bWvS8N19AQwyyP4YJn6RTYI=
-		</data>
-		<key>Headers/AhoyEmailInfoProvider.h</key>
-		<data>
-		4zdm0YKveblLWKeBcnbR3PPptN8=
 		</data>
 		<key>Headers/AhoyImageButton.h</key>
 		<data>
@@ -94,7 +46,7 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		4IjUgb48DqmPKqc92DJYKixWjkA=
+		8B0nbU1iYgkIpPW07qWYn+sDDzQ=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
@@ -108,29 +60,9 @@
 		<data>
 		RPpKsuOA9SipFRlaYn2mr5dtlqQ=
 		</data>
-		<key>Headers/FskCallViewController.h</key>
-		<data>
-		ZD/JM0P31l/213q6+lhUCWdTQMM=
-		</data>
-		<key>Headers/FskConferenceViewController.h</key>
-		<data>
-		NHYdCeIWFQSR7RegnQHiGQPZx4s=
-		</data>
-		<key>Headers/NSData+SRB64Additions.h</key>
-		<data>
-		obmCrC2r2w3za73KnCfhWi5MULs=
-		</data>
-		<key>Headers/SRWebSocket.h</key>
-		<data>
-		nwrdfH4gn2tR2y0f9JVVCvnrMRc=
-		</data>
-		<key>Headers/base64.h</key>
-		<data>
-		+DTZJg2o1nUkOHafGY/Xf8zeRaU=
-		</data>
 		<key>Info.plist</key>
 		<data>
-		uO2zMz8qFOuCMBGjufofv6jjJhg=
+		5lQ6F2xnHcCT32LpZioEh07s9Wg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -309,127 +241,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/AhoyApiManager.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			2OE7HDywk6JnsHbRtT+VdgAkmrk=
-			</data>
-			<key>hash2</key>
-			<data>
-			ZBx670A0JFwIu4+7z015AiSq5PPHSoCTxtYk7J2GA/0=
-			</data>
-		</dict>
-		<key>Headers/AhoyCallViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ZAU9GV6z5czWPeqe/QJsK/V1N7Q=
-			</data>
-			<key>hash2</key>
-			<data>
-			Tqtk+QS8aXGqDBPwgRDXonVRh/wgA3J1QHweHnIL/1M=
-			</data>
-		</dict>
-		<key>Headers/AhoyConference.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+drREV/LDaYXY1Xnrf9twii/3ig=
-			</data>
-			<key>hash2</key>
-			<data>
-			i1usivTCEwSx70GEPp0gI02ynVdCSqBsDMmVS4YG4Uw=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceDelegateProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			YoEu2yGVUx62goD8OvSmyEP2qGA=
-			</data>
-			<key>hash2</key>
-			<data>
-			84MJheuVWZkblRkolzuVfCDvu9zD1JUJy06q/XjSM2s=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceManager.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			0zj9umvAeHZXmvV5U7/Q5q9Ruoo=
-			</data>
-			<key>hash2</key>
-			<data>
-			Iz3+9mVJGYGRxLLZkNsI5pWlMUmTP5T1uk1hrRxAMDY=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceMember.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			FlsrNdI9D4azQC5ZKaQ+ZCC4nfI=
-			</data>
-			<key>hash2</key>
-			<data>
-			W1x0PI3P8LR9TCTnGIG4xJdJSZnnl8sDnNTGltG3DC0=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceMemberDelegateProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			bRxmj3AHEModndJYXRdFqiH9Z9o=
-			</data>
-			<key>hash2</key>
-			<data>
-			3eQU2VGpNPv1Y02MTWOpKgEnjluv29KpmMGA96Y44i8=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceMemberListViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Z1IKKLoXmj8X7dbN1GICYllWbus=
-			</data>
-			<key>hash2</key>
-			<data>
-			KQAQIqRkzGGvqhbRtXgQMF7Y1FkWE2b4RFRvuov1D/Y=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceMemberTouchDelegateProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			WIod+sYarAsgGu89EtHQU1HxhHk=
-			</data>
-			<key>hash2</key>
-			<data>
-			mepzFeXTuwB/nCIcsMc8Yb92Vb9Z/mAqNzjDOsWSMiA=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceMemberViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UF8CeJQJ/lrQUtu/ykA7cXSEufU=
-			</data>
-			<key>hash2</key>
-			<data>
-			1dKXSizj1g9nU0Z//NL2t0bBrklSdm8A2ZtFbrmSjCU=
-			</data>
-		</dict>
-		<key>Headers/AhoyConferenceViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NER8czeglqv7OYSatShi9wfqLuc=
-			</data>
-			<key>hash2</key>
-			<data>
-			jIJXyQT2rGPeR2vSZYonnICGZ42lv7BRawHogjM+cVM=
-			</data>
-		</dict>
 		<key>Headers/AhoyEAGLVideoView.h</key>
 		<dict>
 			<key>hash</key>
@@ -439,17 +250,6 @@
 			<key>hash2</key>
 			<data>
 			siSlzxxbagzCXuISsLTTAY3e4J4Nm44wm5UKantgRmo=
-			</data>
-		</dict>
-		<key>Headers/AhoyEmailInfoProvider.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			4zdm0YKveblLWKeBcnbR3PPptN8=
-			</data>
-			<key>hash2</key>
-			<data>
-			cKsmsDQ9H5l9wBC1H6wXr4KRe9kTeNJ6xywyKD4EDmo=
 			</data>
 		</dict>
 		<key>Headers/AhoyImageButton.h</key>
@@ -555,11 +355,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4IjUgb48DqmPKqc92DJYKixWjkA=
+			8B0nbU1iYgkIpPW07qWYn+sDDzQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			53OypU0OdvVIjKc0rkdo1tvENW6jzK0ZvvYOSqdPL00=
+			dpKFDveSpjPeSzuAdPBzenXwCXdrUewCICQIVjoomtY=
 			</data>
 		</dict>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
@@ -593,61 +393,6 @@
 			<key>hash2</key>
 			<data>
 			jBKkB6ef1e2Hc5losYy/3Ur864nF4ACv0Xl5pQKj/TI=
-			</data>
-		</dict>
-		<key>Headers/FskCallViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ZD/JM0P31l/213q6+lhUCWdTQMM=
-			</data>
-			<key>hash2</key>
-			<data>
-			31Q2rXU8Ney4QozO8i8/dNAKE4CEklzdXpO5lufcBG0=
-			</data>
-		</dict>
-		<key>Headers/FskConferenceViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NHYdCeIWFQSR7RegnQHiGQPZx4s=
-			</data>
-			<key>hash2</key>
-			<data>
-			vRn/Av+5Rd+W9F3m4c3x7hrR+iH6B4cCINavzYDYx78=
-			</data>
-		</dict>
-		<key>Headers/NSData+SRB64Additions.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			obmCrC2r2w3za73KnCfhWi5MULs=
-			</data>
-			<key>hash2</key>
-			<data>
-			uxn5UldX72+ilwaMO3yrfsb0CD/txOs2YvhZMgC+3K0=
-			</data>
-		</dict>
-		<key>Headers/SRWebSocket.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			nwrdfH4gn2tR2y0f9JVVCvnrMRc=
-			</data>
-			<key>hash2</key>
-			<data>
-			jnEvia9uwBvr4uMW63NRNyD5mjCopR9EBw2LsZ/zIrg=
-			</data>
-		</dict>
-		<key>Headers/base64.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			+DTZJg2o1nUkOHafGY/Xf8zeRaU=
-			</data>
-			<key>hash2</key>
-			<data>
-			g3XOuMdKTABTtQj4VXpULEvJeC6npJ9S9QNLLIWwSv4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
