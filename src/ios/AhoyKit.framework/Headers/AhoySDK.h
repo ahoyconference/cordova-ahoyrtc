@@ -62,8 +62,11 @@ typedef NS_ENUM(NSInteger, AhoyCallEvent) {
 - (void)loginWithEmail:(NSString *)email password:(NSString *)password callback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)logoutWithCallback:(void (^)(BOOL, NSDictionary *))callback;
 - (void)getContactListWithCallback:(void (^)(BOOL, NSDictionary *))callback;
+
 - (void)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName connectionTimeout:(int) connectionTimeout callTimeout:(int) callTimeout callback:(void(^)(BOOL, NSDictionary *))callback;
+- (void)callAddress:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo metaData:(NSDictionary *)metaData connectionTimeout:(int) connectionTimeout callTimeout:(int) callTimeout callback:(void(^)(AhoySession *, NSDictionary *))callback;
+
 - (void)callSip:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo sip:(NSDictionary *)sip metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)callSip:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo sip:(NSDictionary *)sip metaData:(NSDictionary *)metaData presentingViewController:(UIViewController *)viewController viewControllerName:(NSString *)viewControllerName connectionTimeout:(int) connectionTimeout callTimeout:(int) callTimeout callback:(void(^)(BOOL, NSDictionary *))callback;
 - (void)callSip:(NSString *)address withAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo sip:(NSDictionary *)sip metaData:(NSDictionary *)metaData connectionTimeout:(int)connectionTimeout callTimeout:(int)callTimeout callback:(void(^)(AhoySession *, NSDictionary *))callback;
