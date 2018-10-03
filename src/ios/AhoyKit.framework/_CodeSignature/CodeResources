@@ -50,7 +50,7 @@
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
-		f6R34yfE3aK1KVk+as+y/o73F6U=
+		Z4ZOE/5A7ewMFT+dQ61o/DZiXgI=
 		</data>
 		<key>Headers/AhoySipCall.h</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ot/8QlpSVsT/HDr/kJBoV20sVgc=
+		sPMdgTJVniDeeT6K2gAMm/Yi+W0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -366,11 +366,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			f6R34yfE3aK1KVk+as+y/o73F6U=
+			Z4ZOE/5A7ewMFT+dQ61o/DZiXgI=
 			</data>
 			<key>hash2</key>
 			<data>
-			KfvQIdj7ck6SLIThKUsiHUvOzs0aDXRhdCr5ag2vyW8=
+			6Ugd+dc7wP18tGy47mRI4wSBUqdQTnrHYgNX6fE7DqY=
 			</data>
 		</dict>
 		<key>Headers/AhoySipCall.h</key>
