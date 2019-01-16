@@ -1,0 +1,8 @@
+{
+  "name": "cordova-ahoyrtc",
+  "displayName": "AhoyRTC Cordova Plugin",
+  "version": "0.1.12",
+  "description": "A Cordova Plugin to use the AhoyRTC UC components",
+  "author": "AhoyRTC GmbH",
+  "license": "contact info@ahoyrtc.com"
+}
