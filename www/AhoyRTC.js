@@ -1,5 +1,5 @@
-var AhoyRtcCalls = {};
 module.exports = {
+	calls: {},
 	init: function(successCallback, errorCallback, apiKey, apiUrl) {
 	    var params = [];
 	    if (apiKey != undefined) params.push(apiKey);
@@ -17,34 +17,34 @@ module.exports = {
     		function(event) {
     		    if (event.event == "NewIncomingCall") {
     			if (event.call && event.call.uuid) {
-    			    AhoyRtcCalls[event.call.uuid] = {
+    			    var call = {
     				uuid: event.call.uuid,
     				from: event.call.from,
     				audio: (event.call.audio == "YES")?true:false,
     				video: (event.call.video == "YES")?true:false,
-    				answer: function(answerSuccessCallback, answerErrorCallback, audio, video) {
+    				answer: function(answerSuccessCallback, answerErrorCallback, audio, video, activityName) {
     				    var params = [ event.call.uuid ];
     				    if (audio != undefined) { params.push(audio) } else { params.push(true) };
     				    if (video != undefined) { params.push(video) } else { params.push(true) };
+    				    if (activityName != undefined) params.push(activityName);
     				    cordova.exec(answerSuccessCallback, answerErrorCallback, "AhoyRTC", "answerIncomingCall", params);
-    				    delete AhoyRtcCalls[event.call.uuid];
     				},
     				reject: function(rejectSuccessCallback, rejectErrorCallback, reason) {
     				    var params = [ event.call.uuid ];
     				    if (reason != undefined) params.push(reason);
-    				    console.log("rejecting "+JSON.stringify(params));
     				    cordova.exec(rejectSuccessCallback, rejectErrorCallback, "AhoyRTC", "rejectIncomingCall", params);
-    				    delete AhoyRtcCalls[event.call.uuid];
+    				    delete AhoyRTC.calls[event.call.uuid];
     				}
     			    };
-    			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
+    			    AhoyRTC.calls[call.uuid] = call;
+    			    eventCallback(event.event, AhoyRTC.calls[event.call.uuid]);
     			}
     		    } else if (event.event == "IncomingCallCanceled") {
-    			if (event.call && event.call.uuid && (AhoyRtcCalls[event.call.uuid] != undefined)) {
-    			    AhoyRtcCalls[event.call.uuid].answer = null;
-    			    AhoyRtcCalls[event.call.uuid].reject = null;
-    			    eventCallback(event.event, AhoyRtcCalls[event.call.uuid]);
-    			    delete AhoyRtcCalls[event.call.uuid];
+    			if (event.call && event.call.uuid && (AhoyRTC.calls[event.call.uuid] != undefined)) {
+    			    AhoyRTC.calls[event.call.uuid].answer = null;
+    			    AhoyRTC.calls[event.call.uuid].reject = null;
+    			    eventCallback(event.event, AhoyRTC.calls[event.call.uuid]);
+    			    delete AhoyRTC.calls[event.call.uuid];
     			}
     		    } else if (event.event == "CallStatus") {
     			if (event.data) {
@@ -157,5 +157,79 @@ module.exports = {
 	},
 	shutdown: function(successCallback, errorCallback) {
     	    cordova.exec(successCallback, errorCallback, "AhoyRTC", "shutdown", []);
+	},
+	sipRegister: function(successCallback, errorCallback, options) {
+	    var params = [];
+	    if (!options.username) {
+		return errorCallback({ error: "missing_mandatory_parameter" });
+	    }
+	    params.push(options.username);
+	    if (!options.password) {
+		return errorCallback({ error: "missing_mandatory_parameter" });
+	    }
+	    params.push(options.password);
+	    if (!options.registrar) {
+		return errorCallback({ error: "missing_mandatory_parameter" });
+	    }
+	    if (!options.registrar.hostname) {
+		return errorCallback({ error: "missing_mandatory_parameter" });
+	    }
+	    params.push(options.registrar.hostname);
+	    if (options.registrar.port) {
+		params.push(options.registrar.port);
+	    } else {
+		params.push(5060);
+	    }
+	    if (options.proxyUrl) {
+		params.push(options.proxyUrl);
+	    } else {
+		params.push("");
+	    }
+	    if (options.useragent) {
+		params.push(options.useragent);
+	    } else {
+		params.push("AhoyRTC Cordova Plugin");
+	    }
+	    if (options.refresh) {
+		params.push(options.refresh);
+	    } else {
+		params.push(300);
+	    }
+    	    cordova.exec(
+    		function(result) {
+    		    successCallback({
+    			registrationId: result.registrationId,
+    			isRegistered: true,
+    			unregister: function(unregisterSuccessCallback, unregisterErrorCallback) {
+    			    var self = this;
+    			    if (self.isRegistered) {
+    				AhoyRTC.sipUnregister(
+    				    function() {
+    					self.isRegistered = false;
+    					if (unregisterSuccessCallback != null) unregisterSuccessCallback();
+    				    },
+    				    unregisterErrorCallback, { registrationId: self.registrationId }
+    				);
+    			    }
+    			}
+    		    });
+    		},
+    		function(result) { 
+    		    errorCallback(result.reason);
+    		},
+    		"AhoyRTC", "sipRegister", params
+    	    );
+	},
+	sipUnregister: function(successCallback, errorCallback, options) {
+	    var params = [];
+	    if (!options.registrationId) {
+		return errorCallback({ error: "missing_mandatory_parameter" });
+	    }
+	    params.push(options.registrationId);
+    	    cordova.exec(
+    		successCallback,
+    		errorCallback,
+    		"AhoyRTC", "sipUnregister", params
+    	    );
 	}
 }

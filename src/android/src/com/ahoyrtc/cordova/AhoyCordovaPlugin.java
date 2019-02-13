@@ -21,6 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.ahoyrtc.sdk.AhoySdk;
+import com.ahoyrtc.sdk.AhoySipRegistration;
+import com.ahoyrtc.sdk.AhoySession;
 
 public class AhoyCordovaPlugin extends CordovaPlugin {
     private AhoySdk ahoySdk;
@@ -47,7 +49,7 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
     		public void run() {
 		    ahoySdk.initializeWithCallback(new AhoySdk.AhoySdkInterface() {
         		@Override
-        		public void callback(Boolean success, JSONObject result) {
+        		public void callback(boolean success, JSONObject result) {
         		    PluginResult pluginResult;
 			    if (success) {
 				pluginResult = new PluginResult(PluginResult.Status.OK, result); 
@@ -108,7 +110,7 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
         	public void run() {
 		    ahoySdk.callAddress(finalAddress, finalAudio, finalVideo, finalMetaData, finalActivityName, new AhoySdk.AhoySdkInterface() {
         		@Override
-        		public void callback(Boolean success, JSONObject result) {
+        		public void callback(boolean success, JSONObject result) {
         		    PluginResult pluginResult;
 			    if (success) {
 				pluginResult = new PluginResult(PluginResult.Status.OK, result); 
@@ -125,6 +127,201 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
 	    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
 	    callbackContext.sendPluginResult(pluginResult);
 	    ahoySdk.shutdown();
+    	    return true;
+        } else if (action.equals("registerCallListener")) {
+	    ahoySdk.registerCallListener(new AhoySdk.AhoyCallListenerInterface() {
+		@Override
+		public void incomingCallReceived(AhoySession session) {
+    		    JSONObject callEvent = new JSONObject();
+    		    JSONObject call = new JSONObject();
+    		    try {
+    			call.put("uuid", session.getUuid());
+    			call.put("audio", session.isAudioEnabled()?"YES":"NO");
+    			call.put("video", session.isVideoEnabled()?"YES":"NO");
+			callEvent.put("event", "NewIncomingCall");
+			callEvent.put("call", call);
+		    } catch (JSONException je) {
+		    }
+		    session.acknowledge();
+		    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, callEvent); 
+		    pluginResult.setKeepCallback(true);
+		    callbackContext.sendPluginResult(pluginResult);
+		}
+
+		@Override
+		public void incomingCallCanceled(AhoySession session) {
+    		    JSONObject callEvent = new JSONObject();
+    		    JSONObject call = new JSONObject();
+    		    try {
+    			call.put("uuid", session.getUuid());
+			callEvent.put("event", "IncomingCallCanceled");
+			callEvent.put("call", call);
+		    } catch (JSONException je) {
+		    }
+		    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, callEvent); 
+		    pluginResult.setKeepCallback(true);
+		    callbackContext.sendPluginResult(pluginResult);
+		}
+	    });
+	    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
+	    pluginResult.setKeepCallback(true);
+	    callbackContext.sendPluginResult(pluginResult);
+    	    return true;
+        } else if (action.equals("unregisterCallListener")) {
+	    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
+	    callbackContext.sendPluginResult(pluginResult);
+	    ahoySdk.unregisterCallListener();
+    	    return true;
+        } else if (action.equals("answerIncomingCall")) {
+	    if (args.length() >= 3) {
+		boolean isAudioEnabled = args.getBoolean(1);
+		boolean isVideoEnabled = args.getBoolean(2);
+		String activityName = null;
+		if (args.length() > 3) {
+		    activityName = args.getString(3);
+		}
+	        ahoySdk.answerIncomingSessionByUuid(args.getString(0), isAudioEnabled, isVideoEnabled, activityName, new AhoySdk.AhoySdkInterface() {
+	    	    @Override
+	    	    public void callback(boolean success, JSONObject result) {
+	    		PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
+	    		callbackContext.sendPluginResult(pluginResult);
+	    	    }
+	        });
+	    } else {
+    		JSONObject result = new JSONObject();
+		result.put("success", false);
+		result.put("reason", "missing_mandatory_parameter");
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		callbackContext.sendPluginResult(pluginResult);
+	    }
+    	    return true;
+        } else if (action.equals("rejectIncomingCall")) {
+	    if (args.length() >= 1) {
+		String reason = "busy";
+		if (args.length() > 1) {
+		    reason = args.getString(1);
+		}
+	        ahoySdk.rejectIncomingSessionByUuid(args.getString(0), reason);
+	        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
+	        callbackContext.sendPluginResult(pluginResult);
+	    } else {
+    		JSONObject result = new JSONObject();
+		result.put("success", false);
+		result.put("reason", "missing_mandatory_parameter");
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		callbackContext.sendPluginResult(pluginResult);
+	    }
+    	    return true;
+        } else if (action.equals("sipRegister")) {
+    	    try {
+		if (args.length() == 7) {
+		    String username = args.getString(0);
+		    String password = args.getString(1);
+		    String registrarHostname = args.getString(2);
+		    int registrarPort = args.getInt(3);
+		    String proxyUrl= args.getString(4);
+		    String useragent = args.getString(5);
+		    int refresh = args.getInt(6);
+		    ahoySdk.sipRegister(username, password, registrarHostname, registrarPort, proxyUrl, useragent, refresh, new AhoySdk.AhoySipRegistrationInterface() {
+			@Override
+			public void sipRegistrationDidRegister(AhoySipRegistration registration) {
+    			    JSONObject result = new JSONObject();
+    			    try {
+				result.put("success", true);
+				result.put("registrationId", registration.getId());
+			    } catch (JSONException je) {
+			    }
+			    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, result); 
+			    pluginResult.setKeepCallback(true);
+			    callbackContext.sendPluginResult(pluginResult);
+			}
+
+			@Override
+			public void sipRegistrationDidFailToRegister(String reason) {
+    			    JSONObject result = new JSONObject();
+    			    try {
+			        result.put("success", false);
+				result.put("reason", reason);
+			    } catch (JSONException je) {
+			    }
+			    PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+			    pluginResult.setKeepCallback(true);
+			    callbackContext.sendPluginResult(pluginResult);
+			}
+
+			@Override
+			public void sipRegistrationDidUnregister(AhoySipRegistration registration) {
+			}
+
+			@Override
+			public void sipRegistrationDidFailToUnregister(AhoySipRegistration registration, String reason) {
+			}
+		    });
+    		} else {
+    		    JSONObject result = new JSONObject();
+		    result.put("success", false);
+		    result.put("reason", "missing_mandatory_parameter");
+		    PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		    callbackContext.sendPluginResult(pluginResult);
+    		}
+    	    } catch (JSONException je) {
+    		JSONObject result = new JSONObject();
+		result.put("success", false);
+		result.put("reason", je.toString());
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		callbackContext.sendPluginResult(pluginResult);
+    	    }
+    	    return true;
+        } else if (action.equals("sipUnregister")) {
+    	    try {
+		if (args.length() == 1) {
+		    String registrationId = args.getString(0);
+		    ahoySdk.sipUnregister(registrationId, new AhoySdk.AhoySipRegistrationInterface() {
+			@Override
+			public void sipRegistrationDidRegister(AhoySipRegistration registration) {
+			}
+
+			@Override
+			public void sipRegistrationDidFailToRegister(String reason) {
+			}
+
+			@Override
+			public void sipRegistrationDidUnregister(AhoySipRegistration registration) {
+    			    JSONObject result = new JSONObject();
+    			    try {
+			        result.put("success", true);
+			    } catch (JSONException je) {
+			    }
+			    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, result); 
+			    callbackContext.sendPluginResult(pluginResult);
+			}
+
+			@Override
+			public void sipRegistrationDidFailToUnregister(AhoySipRegistration registration, String reason) {
+    			    JSONObject result = new JSONObject();
+    			    try {
+			        result.put("success", false);
+				result.put("reason", reason);
+			    } catch (JSONException je) {
+			    }
+			    PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+			    callbackContext.sendPluginResult(pluginResult);
+			}
+		    });
+    		} else {
+    		    JSONObject result = new JSONObject();
+		    result.put("success", false);
+		    result.put("reason", "missing_mandatory_parameter");
+		    PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		    callbackContext.sendPluginResult(pluginResult);
+    		}
+    	    } catch (JSONException je) {
+    		JSONObject result = new JSONObject();
+		result.put("success", false);
+		result.put("reason", je.toString());
+		PluginResult pluginResult = new PluginResult(PluginResult.Status.ERROR, result); 
+		callbackContext.sendPluginResult(pluginResult);
+    	    }
     	    return true;
         }
         return false;
