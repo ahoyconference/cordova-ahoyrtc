@@ -73,6 +73,7 @@
 	    <uses-permission android:name="android.permission.WAKE_LOCK" />
 	</config-file>
 	<config-file target="AndroidManifest.xml" parent="/manifest/application">
+	    <activity android:name="com.ahoyrtc.sdk.AhoyAudioCallActivity" android:configChanges="orientation|screenSize"></activity>
 	    <activity android:name="com.ahoyrtc.sdk.AhoyVideoCallActivity" android:configChanges="orientation|screenSize"></activity>
 	</config-file>
     </platform>
