@@ -126,7 +126,11 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
         } else if (action.equals("shutdown")) {
 	    PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
 	    callbackContext.sendPluginResult(pluginResult);
-	    ahoySdk.shutdown();
+	    cordova.getActivity().runOnUiThread(new Runnable() {
+        	public void run() {
+		    ahoySdk.shutdown();
+        	}
+    	    });
     	    return true;
         } else if (action.equals("registerCallListener")) {
 	    ahoySdk.registerCallListener(new AhoySdk.AhoyCallListenerInterface() {
