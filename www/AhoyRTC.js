@@ -29,9 +29,18 @@ module.exports = {
     				    if (activityName != undefined) params.push(activityName);
     				    cordova.exec(answerSuccessCallback, answerErrorCallback, "AhoyRTC", "answerIncomingCall", params);
     				},
-    				reject: function(rejectSuccessCallback, rejectErrorCallback, reason) {
+    				reject: function(rejectSuccessCallback, rejectErrorCallback, reason, destroySession) {
     				    var params = [ event.call.uuid ];
-    				    if (reason != undefined) params.push(reason);
+    				    if (reason != undefined) {
+    				      params.push(reason);
+    				    } else {
+    				      params.push("busy");
+    				    }
+    				    if (destroySession != undefined) {
+    				      params.push(true);
+    				    } else {
+    				      params.push(false);
+    				    }
     				    cordova.exec(rejectSuccessCallback, rejectErrorCallback, "AhoyRTC", "rejectIncomingCall", params);
     				    delete AhoyRTC.calls[event.call.uuid];
     				}

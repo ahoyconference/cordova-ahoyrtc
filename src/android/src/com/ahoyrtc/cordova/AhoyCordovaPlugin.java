@@ -153,11 +153,12 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
 		}
 
 		@Override
-		public void incomingCallCanceled(AhoySession session) {
+		public void incomingCallCanceled(AhoySession session, boolean handledElsewhere) {
     		    JSONObject callEvent = new JSONObject();
     		    JSONObject call = new JSONObject();
     		    try {
     			call.put("uuid", session.getUuid());
+    			call.put("handledElsewhere", handledElsewhere);
 			callEvent.put("event", "IncomingCallCanceled");
 			callEvent.put("call", call);
 		    } catch (JSONException je) {
@@ -202,10 +203,14 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
         } else if (action.equals("rejectIncomingCall")) {
 	    if (args.length() >= 1) {
 		String reason = "busy";
+		boolean destroySession = false;
 		if (args.length() > 1) {
 		    reason = args.getString(1);
 		}
-	        ahoySdk.rejectIncomingSessionByUuid(args.getString(0), reason);
+		if (args.length() > 2) {
+		    destroySession = args.getBoolean(2);
+		}
+	        ahoySdk.rejectIncomingSessionByUuid(args.getString(0), reason, destroySession);
 	        PluginResult pluginResult = new PluginResult(PluginResult.Status.OK); 
 	        callbackContext.sendPluginResult(pluginResult);
 	    } else {
