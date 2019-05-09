@@ -22,6 +22,9 @@ module.exports = {
     				from: event.call.from,
     				audio: (event.call.audio == "YES")?true:false,
     				video: (event.call.video == "YES")?true:false,
+    				callingParty: event.call.callingParty,
+    				calledParty: event.call.calledParty,
+    				sip: event.call.sip,
     				answer: function(answerSuccessCallback, answerErrorCallback, audio, video, activityName) {
     				    var params = [ event.call.uuid ];
     				    if (audio != undefined) { params.push(audio) } else { params.push(true) };

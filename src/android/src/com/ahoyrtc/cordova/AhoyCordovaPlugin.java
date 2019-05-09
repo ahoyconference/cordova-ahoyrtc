@@ -142,6 +142,11 @@ public class AhoyCordovaPlugin extends CordovaPlugin {
     			call.put("uuid", session.getUuid());
     			call.put("audio", session.isAudioEnabled()?"YES":"NO");
     			call.put("video", session.isVideoEnabled()?"YES":"NO");
+    			call.put("callimgParty", session.getCallingParty());
+    			call.put("calledParty", session.getCalledParty());
+    			JSONObject sip = new JSONObject();
+    			sip.put("registrationId", session.getSipRegistrationId());
+    			call.put("sip", sip);
 			callEvent.put("event", "NewIncomingCall");
 			callEvent.put("call", call);
 		    } catch (JSONException je) {
