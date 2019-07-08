@@ -18,8 +18,6 @@ FOUNDATION_EXPORT const unsigned char AhoyKitVersionString[];
 
 #import <WebRTC/WebRTC.h>
 #import <AhoyKit/AhoySDK.h>
-#import <AhoyKit/AhoySessionDelegateProtocol.h>
-#import <AhoyKit/AhoyMediaLayerDelegateProtocol.h>
 #import <AhoyKit/AhoyImageButton.h>
 #import <AhoyKit/AhoyImageSwitch.h>
 #import <AhoyKit/AhoySession.h>

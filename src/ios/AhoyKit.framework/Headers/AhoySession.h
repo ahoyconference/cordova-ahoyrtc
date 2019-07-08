@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <WebRTC/WebRTC.h>
-#import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySessionDelegateProtocol.h"
 
 @interface AhoySession : NSObject <RTCPeerConnectionDelegate>
 
 @property (nonatomic, weak, nullable) id<AhoySessionDelegateProtocol> delegate;
-@property (nonatomic, weak, nullable) id<AhoyMediaLayerDelegateProtocol> mediaLayerDelegate;
 @property (nonatomic, strong, nullable) NSString *uuid;
 @property (nonatomic, strong, nullable) NSString *email;
 @property (nonatomic, strong, nullable) NSString *url;
@@ -29,6 +27,8 @@
 @property (nonatomic, strong, nullable) NSDictionary *sip;
 @property (nonatomic) BOOL isAudioEnabled;
 @property (nonatomic) BOOL isVideoEnabled;
+@property (nonatomic) BOOL isHdVideoEnabled;
+@property (nonatomic) BOOL isNoiseReductionEnabled;
 @property (nonatomic) BOOL isTrickleIceEnabled;
 @property (nonatomic, strong, nullable) UILocalNotification *localNotification;
 @property (nonatomic, strong, nullable) UIAlertController *alertController;
@@ -41,7 +41,10 @@
 @property (nonatomic) int localAudioLostPackets;
 @property (nonatomic, weak, nullable) RTCMediaStreamTrack *localVideoTrack;
 @property (nonatomic) int localVideoLostPackets;
-@property (nonatomic) int localVideoMaxBitrate;
+@property (nonatomic, strong, nullable) NSNumber *maxVideoBitrate;
+@property (nonatomic) AVCaptureDevicePosition captureDevicePosition;
+@property (nonatomic, strong, nullable) NSDictionary *preferredVideoCodec;
+
 @property (nonatomic) int bweAvailableSendBandwidth;
 @property (nonatomic) int bweAvailableReceiveBandwidth;
 @property (nonatomic) BOOL isBandwidthWarningActive;
@@ -74,6 +77,7 @@
 
 - (void)answerWithAudio:(BOOL)enableAudio andVideo:(BOOL)enableVideo callback:(nullable void(^)(BOOL, NSDictionary * _Nullable))callback;
 - (void)answerIncomingSessionWithAudio:(BOOL) enableAudio andVideo:(BOOL) enableVideo;
+- (void)setVideoOptionsWithCaptureDevicePosition:(AVCaptureDevicePosition)captureDevicePosition hdVideo:(BOOL)enableHdVideo noiseReduction:(BOOL)enableNoiseReduction preferredCodec:(NSString *)codec bitrate:(NSNumber *)bitrate;
 - (void)startOutgoingSession;
 - (void)rejectWithStatus:(int)status andReason:(nullable NSString *)reason;
 

@@ -6,20 +6,26 @@
 //  Copyright (c) 2015 Junghanns Communications GmbH. All rights reserved.
 //
 
+@class AhoySession;
+@class RTCMediaStream;
 
 @protocol AhoySessionDelegateProtocol <NSObject>
 
 @required
-- (void)sessionDidGetAcknowledged:(id)call;
-- (void)sessionDidDisconnectMediaLayer:(id)call;
-- (void)sessionDidBecomeConnected:(id)call;
-- (void)sessionDidGetHungUp:(id)call;
+- (void)sessionDidGetAcknowledged:(AhoySession *)call;
+- (void)sessionDidGetAnswered:(AhoySession *)call withPeer:(NSDictionary *)peer;
+- (void)sessionDidGetRejected:(AhoySession *)call withReason:(NSString *)reason;
+- (void)sessionDidGetCanceled:(AhoySession *)call;
+- (void)sessionDidGetTerminated:(AhoySession *)call;
+- (void)sessionDidFail:(AhoySession *)call;
 
 @optional
-- (void)sessionIsProgressing:(id)call progress:(NSDictionary *)information;
-- (void)didGetLocalMediaStream:(id) stream;
-- (void)didGetRemoteMediaStream:(id) stream;
-- (void)didNotGetLocalMediaStream;
-- (void)sessionDidFail:(id) call;
+- (void)sessionDidGetLocalMediaStream:(RTCMediaStream *) stream;
+- (void)sessionDidGetRemoteMediaStream:(RTCMediaStream *) stream;
+- (void)sessionDidNotGetLocalMediaStream;
 
+- (void)sessionIsProgressing:(AhoySession *)call progress:(NSDictionary *)information;
+- (void)sessionDidEstablishMediaLayer:(AhoySession *)call;
+- (void)sessionDidDisconnectMediaLayer:(AhoySession *)call;
+- (void)sessionDidFailToEstablishMediaLayer:(AhoySession *)call;
 @end

@@ -26,15 +26,11 @@
 		</data>
 		<key>Headers/AhoyKit.h</key>
 		<data>
-		XA+C9uxpT+m4PckJgKjPW5GR8Hw=
-		</data>
-		<key>Headers/AhoyMediaLayerDelegateProtocol.h</key>
-		<data>
-		AKKMQY1o/258yHB6kO0qoCEP744=
+		8c5h4PTLsyk6TxkImVSicvXsqI0=
 		</data>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<data>
-		TqeFJmMHb72iE8e7r859JlV6DsA=
+		suagT18cmHKMS4q9UkRLSjIBJlM=
 		</data>
 		<key>Headers/AhoySDK.h</key>
 		<data>
@@ -46,11 +42,11 @@
 		</data>
 		<key>Headers/AhoySession.h</key>
 		<data>
-		8B0nbU1iYgkIpPW07qWYn+sDDzQ=
+		/YTpv9nNVzwisuRmxqeBQM3fdLw=
 		</data>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<data>
-		Z4ZOE/5A7ewMFT+dQ61o/DZiXgI=
+		3ZqzSdNTGhYht8pnpjm2G3ydlIA=
 		</data>
 		<key>Headers/AhoySipCall.h</key>
 		<data>
@@ -62,7 +58,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sPMdgTJVniDeeT6K2gAMm/Yi+W0=
+		HmiE0g16z9MBRxhZerPRxhVqLxs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,11 +66,11 @@
 		</data>
 		<key>PrivateHeaders/AhoyApiManager.h</key>
 		<data>
-		2OE7HDywk6JnsHbRtT+VdgAkmrk=
+		yUgQ+JLrhs3dlG6CWzbWKNnn40c=
 		</data>
 		<key>PrivateHeaders/AhoyCallViewController.h</key>
 		<data>
-		ZAU9GV6z5czWPeqe/QJsK/V1N7Q=
+		h4qDEbbp4hh77VXQAtS0gCzIn3Y=
 		</data>
 		<key>PrivateHeaders/AhoyConference.h</key>
 		<data>
@@ -118,7 +114,7 @@
 		</data>
 		<key>PrivateHeaders/FskCallViewController.h</key>
 		<data>
-		ZD/JM0P31l/213q6+lhUCWdTQMM=
+		BMONB+XX85uhPYTNMUo3MvZX7jQ=
 		</data>
 		<key>PrivateHeaders/FskConferenceViewController.h</key>
 		<data>
@@ -300,33 +296,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XA+C9uxpT+m4PckJgKjPW5GR8Hw=
+			8c5h4PTLsyk6TxkImVSicvXsqI0=
 			</data>
 			<key>hash2</key>
 			<data>
-			4BVMzjAaPHUpkgB6Sqzd5164JDmbIIwtEQ8dtLPe2ZE=
-			</data>
-		</dict>
-		<key>Headers/AhoyMediaLayerDelegateProtocol.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			AKKMQY1o/258yHB6kO0qoCEP744=
-			</data>
-			<key>hash2</key>
-			<data>
-			R1tIPgmLamS1sn0oZrAGFq3rMR/eJ0Axkwf23XHTnIs=
+			13LRJujdi+/jBk1IFKnhsNuRITugW24aRxssdjXMZOs=
 			</data>
 		</dict>
 		<key>Headers/AhoyPeerConnectionFactory.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TqeFJmMHb72iE8e7r859JlV6DsA=
+			suagT18cmHKMS4q9UkRLSjIBJlM=
 			</data>
 			<key>hash2</key>
 			<data>
-			r07CXUdQGGfUWqFNaUjOPyshPkcZfIKVVV+cI5S3i5o=
+			EviZgni8JHQaqC1xtVyKYeeS2Ct8uGor/AJL/EU1Z9E=
 			</data>
 		</dict>
 		<key>Headers/AhoySDK.h</key>
@@ -355,22 +340,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8B0nbU1iYgkIpPW07qWYn+sDDzQ=
+			/YTpv9nNVzwisuRmxqeBQM3fdLw=
 			</data>
 			<key>hash2</key>
 			<data>
-			dpKFDveSpjPeSzuAdPBzenXwCXdrUewCICQIVjoomtY=
+			lKjqVukQ6Ni7u3EYtmpcBbVWIB1TmE+Yw85funPtzHk=
 			</data>
 		</dict>
 		<key>Headers/AhoySessionDelegateProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Z4ZOE/5A7ewMFT+dQ61o/DZiXgI=
+			3ZqzSdNTGhYht8pnpjm2G3ydlIA=
 			</data>
 			<key>hash2</key>
 			<data>
-			6Ugd+dc7wP18tGy47mRI4wSBUqdQTnrHYgNX6fE7DqY=
+			PDAx4Mr2noTMLBkssVwGey+HV7GrZ5WEUwmI/+su7YE=
 			</data>
 		</dict>
 		<key>Headers/AhoySipCall.h</key>
@@ -410,22 +395,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			2OE7HDywk6JnsHbRtT+VdgAkmrk=
+			yUgQ+JLrhs3dlG6CWzbWKNnn40c=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZBx670A0JFwIu4+7z015AiSq5PPHSoCTxtYk7J2GA/0=
+			v6WJT7CdjJ0kaE66Mi987jUYyGYNSRANgf9euK7J8Gs=
 			</data>
 		</dict>
 		<key>PrivateHeaders/AhoyCallViewController.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ZAU9GV6z5czWPeqe/QJsK/V1N7Q=
+			h4qDEbbp4hh77VXQAtS0gCzIn3Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			Tqtk+QS8aXGqDBPwgRDXonVRh/wgA3J1QHweHnIL/1M=
+			GfvBP3GkNQedgCCzWDQ7cf1Wdn32WyHNxUS7Oz8Rw34=
 			</data>
 		</dict>
 		<key>PrivateHeaders/AhoyConference.h</key>
@@ -542,11 +527,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZD/JM0P31l/213q6+lhUCWdTQMM=
+			BMONB+XX85uhPYTNMUo3MvZX7jQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			31Q2rXU8Ney4QozO8i8/dNAKE4CEklzdXpO5lufcBG0=
+			swOFhl1Lnr9h8/0+v7QaKqXR1M4v1bcCYXcyiix1W/8=
 			</data>
 		</dict>
 		<key>PrivateHeaders/FskConferenceViewController.h</key>
@@ -853,7 +838,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -884,24 +869,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -937,13 +910,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

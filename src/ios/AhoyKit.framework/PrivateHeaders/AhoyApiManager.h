@@ -15,8 +15,6 @@
 #import <WebRTC/WebRTC.h>
 #import "SocketRocket/SRWebSocket.h"
 #import "AhoyPeerConnectionFactory.h"
-#import "AhoySessionDelegateProtocol.h"
-#import "AhoyMediaLayerDelegateProtocol.h"
 #import "AhoySession.h"
 #import "AhoyReachability.h"
 

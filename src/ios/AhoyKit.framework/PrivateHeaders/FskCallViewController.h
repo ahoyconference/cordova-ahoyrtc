@@ -23,7 +23,7 @@
 #import "AhoyImageButton.h"
 #import "AhoyImageSwitch.h"
 
-@interface FskCallViewController : UIViewController <AhoySessionDelegateProtocol, AhoyMediaLayerDelegateProtocol, RTCEAGLVideoViewDelegate, AhoyImageButtonDelegateProtocol, AhoyImageSwitchDelegateProtocol>
+@interface FskCallViewController : UIViewController <AhoySessionDelegateProtocol, RTCEAGLVideoViewDelegate, AhoyImageButtonDelegateProtocol, AhoyImageSwitchDelegateProtocol>
 
 
 - (id)initWithSession:(AhoySession *)session callback:(void(^)(BOOL, NSDictionary *))callback;

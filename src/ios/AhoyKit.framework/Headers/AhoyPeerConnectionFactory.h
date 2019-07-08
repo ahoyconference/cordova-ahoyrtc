@@ -22,6 +22,7 @@
 + (NSString *)processSdp:(NSString *)origSDP  maxVideoBitrate:(NSNumber *)maxVideoBitrate limitVideoBitrate:(bool)limitVideoBitrate;
 + (NSString *)processSdp:(NSString *)origSDP;
 + (RTCSessionDescription *)descriptionForDescription:(RTCSessionDescription *)description preferredVideoCodec:(NSString *)codec;
++ (NSString *)processSdp:(NSString *)origSDP preferredVideoCodec:(NSString *)codec;
 - (RTCPeerConnection *)createPeerConnectionWithAudio:(BOOL) audio andVideo:(BOOL)video andStunUri:(NSString *)stunUri andDelegate:(id<RTCPeerConnectionDelegate>)delegate;
 - (RTCPeerConnection *)createPeerConnectionWithAudio:(BOOL) audio andVideo:(BOOL)video andTurn:(NSDictionary *)turn andDelegate:(id<RTCPeerConnectionDelegate>)delegate;
 - (RTCMediaStream *)addLocalMediaToPeerConnection:(RTCPeerConnection *)peerConnection audio:(BOOL)audio video:(BOOL)video  cameraPosition:(AVCaptureDevicePosition) position noiseReduction:(BOOL) enableNoiseReduction hdVideo: (BOOL) enableHdVideo forConferencing:(BOOL)forConferencing;
